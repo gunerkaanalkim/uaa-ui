@@ -1,46 +1,67 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-7 col-lg-5">
-      <div class="wrap">
-        <div class="login-wrap p-4 p-md-5">
-          <div class="d-flex">
-            <div class="w-100">
-              <h3 class="mb-4">Sign In</h3>
-            </div>
-            <div class="w-100">
-              <p class="social-media d-flex justify-content-end">
-                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span
-                  class="fa fa-facebook"></span></a>
-                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span
-                  class="fa fa-twitter"></span></a>
-              </p>
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            <input type="text" class="form-control" required id="username">
-            <label class="form-control-placeholder" for="username">Username</label>
-          </div>
-          <div class="form-group">
-            <input id="password-field" type="password" class="form-control" id="password">
-            <label class="form-control-placeholder" for="password">Password</label>
-            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-          </div>
-          <div class="form-group">
-            <button class="form-control btn btn-primary rounded submit px-3">Sign In</button>
-          </div>
-          <div class="form-group d-md-flex">
-            <div class="w-50 text-left">
-              <label class="checkbox-wrap checkbox-primary mb-0">Remember Me
-                <input type="checkbox" checked="">
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div class="w-50 text-md-right">
-              <a href="#">Forgot Password</a>
-            </div>
-          </div>
-          <p class="text-center">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>
+<div class="container-fluid vh-100" style="margin-top: 100px">
+  <div class="" style="margin-top: 100px">
+    <div class="rounded d-flex justify-content-center">
+      <div class="col-md-4 col-sm-12 shadow-lg p-5">
+        <div class="text-center">
+          <h3 class="text-primary">Integrator</h3>
         </div>
+        <form action="">
+          <div
+            class="btn-group d-flex justify-content-center mb-3"
+            role="group"
+          >
+          </div>
+          <div class="mb-3">
+            <label for="username" class="form-label"> Username or Email </label>
+            <input
+              type="email"
+              class="form-control"
+              id="username"
+              placeholder="name@example.com"
+              [formControl]="username"
+              minlength="5"
+              maxlength="50"
+              required=""
+              [ngClass]="{ 'is-invalid': usernameHasError() }"
+            />
+            <div id="usernameValidation" class="invalid-feedback">
+              Please enter a valid username.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label"> Password </label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              [formControl]="password"
+              minlength="8"
+              maxlength="50"
+              [ngClass]="{ 'is-invalid': passwordHasError() }"
+              required=""
+            />
+            <div id="passswordValidation" class="invalid-feedback">
+              Please enter a valid password.
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button" (click)="onLogin()" [disabled]="formHasError()">
+              Login
+            </button>
+<!--            <button class="btn btn-primary" type="button" (click)="onLogin()">-->
+<!--              Register-->
+<!--            </button>-->
+          </div>
+<!--          <p class="text-center mt-5">-->
+<!--            Don't have an account?-->
+<!--            <a class="text-primary" [routerLink]="['/register']">Sign Up</a>-->
+<!--          </p>-->
+<!--          <p class="text-center">-->
+<!--            <a class="text-primary" [routerLink]="['/forgot-password']"-->
+<!--            >Forgot password</a-->
+<!--            >-->
+<!--          </p>-->
+        </form>
       </div>
     </div>
   </div>
