@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../services/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-splash',
@@ -9,12 +10,15 @@ import {AuthenticationService} from "../../services/authentication.service";
 export class SplashComponent implements OnInit {
 
   constructor(
-    private readonly authenticationService: AuthenticationService
+    private readonly authenticationService: AuthenticationService,
+    private readonly router: Router
   ) {
   }
 
   ngOnInit(): void {
-    this.authenticationService.whoAmI().subscribe();
+    this.authenticationService.whoAmI().subscribe(response=> {
+      this.router.navigate(['home'])
+    });
   }
 
 

@@ -4,7 +4,8 @@ export const environment = {
   api: {
     url: 'http://localhost:8080/api',
     endpoints: {
-      whoAmI: '/authentication/whoAmI'
+      whoAmI: '/authenticate/who-am-i',
+      login: '/authenticate/login',
     }
   }
 };
