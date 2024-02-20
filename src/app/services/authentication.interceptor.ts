@@ -9,13 +9,15 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let token = JSON.parse(localStorage.getItem("state")!).state.token;
+    let token = JSON.parse(localStorage.getItem("state")!).state.userDetails.token;
 
-    request = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
-    });
+    if(!request.url.includes('login')) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+    }
 
     return next.handle(request);
   }

@@ -16,6 +16,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {APP_CONFIG} from "./config/tokens";
 import {environment} from "../environments/environment";
 import {AuthenticationInterceptor} from "./services/authentication.interceptor";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {AuthenticationInterceptor} from "./services/authentication.interceptor";
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     SharedComponentsModule,
     StoreModule.forRoot({state: mainReducer}, {metaReducers, runtimeChecks: {strictStateImmutability: false}}),
