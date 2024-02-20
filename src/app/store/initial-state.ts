@@ -1,5 +1,5 @@
-import {InitialStateType} from "./model";
+import {InitialStateType, UserDetails} from "./model";
 
 export const initialState: InitialStateType = {
-  token: ''
+  userDetails: {} as UserDetails
 };
