@@ -4,6 +4,7 @@ import {APP_CONFIG} from "../config/tokens";
 import {catchError} from "rxjs";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
 import {UserDetails} from "../store/model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ import {UserDetails} from "../store/model";
 export class AuthenticationService {
 
   constructor(
-    private readonly httpClient: HttpClient,
     @Inject(APP_CONFIG) private config: any,
+    private readonly httpClient: HttpClient,
+    private readonly router: Router,
     private readonly globalExceptionHandlerService: GlobalExceptionHandlerService
   ) {
   }
@@ -20,7 +22,10 @@ export class AuthenticationService {
   whoAmI() {
     return this.httpClient
       .get<UserDetails>(`${this.config.api.url}${this.config.api.endpoints.whoAmI}`)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+      .pipe(catchError(this.globalExceptionHandlerService.handleError))
+      .subscribe(response=> {
+        this.router.navigate(['home'])
+      });
   }
 
 

@@ -8,21 +8,8 @@ import {UserDetails} from "../../store/model";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  userDetails: UserDetails = {} as UserDetails;
-
+export class HomeComponent {
   constructor(
-    private readonly store: Store
   ) {
-  }
-
-  ngOnInit(): void {
-    this.selectUserDetails();
-  }
-
-  private selectUserDetails() {
-    this.store.select(selectUserDetails).subscribe(userDetails => {
-      this.userDetails = userDetails;
-    })
   }
 }
