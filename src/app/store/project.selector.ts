@@ -14,3 +14,8 @@ export const selectUserDetails = createSelector(
   selectState,
   (state: fromProject.InitialStateType) => state.userDetails
 )
+
+export const selectShops = createSelector(
+  selectState,
+  (state: fromProject.InitialStateType) => state.shops
+)
