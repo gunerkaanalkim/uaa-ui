@@ -1,4 +1,26 @@
 <div class="container-fluid">
   <app-header></app-header>
-  <p class="h3">Shops</p>
+  <p class="h3">
+    <span>Shops</span>
+  </p>
+  <a class="btn btn-primary btn-sm"
+     [routerLink]="['/shop/new']">
+    New Shop
+  </a>
+  <ol class="list-group list-group-numbered">
+    <li *ngFor="let shop of shops"
+        class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">{{shop.title}}</div>
+        {{shop.description}}
+        <div class="fw-bold">Etsy Account ID : {{shop.etsyAccountId}}</div>
+      </div>
+      <a class="btn btn-warning btn-sm"
+         [routerLink]="['/shop/edit', shop.id ]">
+        Edit
+      </a>
+      &nbsp;&nbsp;
+      <a class="btn btn-danger btn-sm">Delete</a>
+    </li>
+  </ol>
 </div>
