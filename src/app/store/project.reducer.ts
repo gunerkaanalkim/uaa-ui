@@ -7,10 +7,14 @@ import * as ProjectViewActions from './project.action';
 export const mainReducer = createImmerReducer(
   initialState,
   on(ProjectViewActions.checkUserLoggedIn, (state) => {
-
     return state;
-  }), on(ProjectViewActions.setUserInfo, (state, {userDetails}) => {
+  }),
+  on(ProjectViewActions.setUserInfo, (state, {userDetails}) => {
     state.userDetails = userDetails;
+    return state;
+  }),
+  on(ProjectViewActions.setAllShops, (state, {shops}) => {
+    state.shops = shops;
     return state;
   }),
 );

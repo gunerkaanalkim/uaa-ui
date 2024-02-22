@@ -11,6 +11,14 @@ export interface UserDetails {
   userInfo: UserInfo
 }
 
+export interface Shop {
+  description: string
+  etsyAccountId: string
+  id: number
+  title: string
+}
+
 export interface InitialStateType {
-  userDetails: UserDetails
+  userDetails: UserDetails,
+  shops: Shop[]
 }

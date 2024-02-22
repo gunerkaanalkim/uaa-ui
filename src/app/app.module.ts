@@ -17,6 +17,8 @@ import {APP_CONFIG} from "./config/tokens";
 import {environment} from "../environments/environment";
 import {AuthenticationInterceptor} from "./services/authentication.interceptor";
 import {ReactiveFormsModule} from "@angular/forms";
+import { NewShopComponent } from './pages/shop/new-shop/new-shop.component';
+import { EditShopComponent } from './pages/shop/edit-shop/edit-shop.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     LoginComponent,
     NotFoundComponent,
     HomeComponent,
-    SplashComponent
+    SplashComponent,
+    NewShopComponent,
+    EditShopComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {UserDetails} from "./model";
+import {Shop, UserDetails} from "./model";
 
 export const checkUserLoggedIn = createAction(
   "[Splash Component] CheckUserLoggedIn"
@@ -9,6 +9,18 @@ export const setUserInfo = createAction(
   "[Login Component] SetUserInfo",
   props<{ userDetails: UserDetails }>()
 );
+
+export const setAllShops = createAction(
+  "[Home Component] SetShops",
+  props<{ shops: Shop[] }>()
+);
+
+export const setSingleShop = createAction(
+  "[NewShop Component] SetSingleShop",
+  props<{ shop: Shop }>()
+);
+
+
 
 
 export const LOGOUT = createAction(

@@ -16,7 +16,9 @@ export class SplashComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authenticationService.whoAmI();
+    this.authenticationService.whoAmI().subscribe(()=>{
+      this.router.navigate(['/home'])
+    });
   }
 
 

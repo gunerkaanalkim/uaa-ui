@@ -10,7 +10,6 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class AuthenticationService {
-
   constructor(
     @Inject(APP_CONFIG) private config: any,
     private readonly httpClient: HttpClient,
@@ -21,17 +20,14 @@ export class AuthenticationService {
 
   whoAmI() {
     return this.httpClient
-      .get<UserDetails>(`${this.config.api.url}${this.config.api.endpoints.whoAmI}`)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError))
-      .subscribe(response=> {
-        this.router.navigate(['home'])
-      });
+      .get<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.whoAmI}`)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 
 
   login(username: string, password: string) {
     return this.httpClient
-      .post<UserDetails>(`${this.config.api.url}${this.config.api.endpoints.login}`, {
+      .post<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.login}`, {
         username: username,
         password: password
       })
