@@ -23,9 +23,27 @@ export class ShopService {
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 
+  getById(id: number) {
+    return this.httpClient
+      .get<Shop>(`${this.config.api.services.integrator}${this.config.api.endpoints.createShop}/${id}`)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
+
   create(shop: Shop) {
     return this.httpClient
       .post<Shop>(`${this.config.api.services.integrator}${this.config.api.endpoints.createShop}`, shop)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
+
+  edit(shop: Shop) {
+    return this.httpClient
+      .put<Shop>(`${this.config.api.services.integrator}${this.config.api.endpoints.createShop}`, shop)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
+
+  destroy(id: number) {
+    return this.httpClient
+      .delete<Shop>(`${this.config.api.services.integrator}${this.config.api.endpoints.createShop}/${id}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 }
