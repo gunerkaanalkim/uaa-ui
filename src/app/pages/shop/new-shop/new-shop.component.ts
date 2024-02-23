@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {setSingleShop, setUserInfo} from "../../../store/project.action";
+import {setSingleShop} from "../../../store/project.action";
 import {ShopService} from "../../../services/shop.service";
 import {Store} from "@ngrx/store";
 import {Router} from "@angular/router";
@@ -22,7 +22,7 @@ export class NewShopComponent {
   ) {
   }
 
-  onLogin() {
+  onSave() {
     if (!this.formHasError()) {
       this.shopService
         .create({
