@@ -20,9 +20,6 @@ export const setSingleShop = createAction(
   props<{ shop: Shop }>()
 );
 
-
-
-
 export const LOGOUT = createAction(
   "LOGOUT",
 );
