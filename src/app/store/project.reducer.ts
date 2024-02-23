@@ -16,5 +16,5 @@ export const mainReducer = createImmerReducer(
   on(ProjectViewActions.setAllShops, (state, {shops}) => {
     state.shops = shops;
     return state;
-  }),
+  })
 );

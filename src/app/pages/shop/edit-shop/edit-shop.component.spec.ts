@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EditShopComponent } from './edit-shop.component';
+import {EditShopComponent} from './edit-shop.component';
 
 describe('EditShopComponent', () => {
   let component: EditShopComponent;

@@ -17,8 +17,10 @@ import {APP_CONFIG} from "./config/tokens";
 import {environment} from "../environments/environment";
 import {AuthenticationInterceptor} from "./services/authentication.interceptor";
 import {ReactiveFormsModule} from "@angular/forms";
-import { NewShopComponent } from './pages/shop/new-shop/new-shop.component';
-import { EditShopComponent } from './pages/shop/edit-shop/edit-shop.component';
+import {NewShopComponent} from './pages/shop/new-shop/new-shop.component';
+import {EditShopComponent} from './pages/shop/edit-shop/edit-shop.component';
+import {ListShopComponent} from './pages/shop/list-shop/list-shop.component';
+import {DeleteShopComponent} from './pages/shop/delete-shop/delete-shop.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { EditShopComponent } from './pages/shop/edit-shop/edit-shop.component';
     HomeComponent,
     SplashComponent,
     NewShopComponent,
-    EditShopComponent
+    EditShopComponent,
+    ListShopComponent,
+    DeleteShopComponent
   ],
   imports: [
     BrowserModule,
