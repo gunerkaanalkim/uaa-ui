@@ -1,1 +1,66 @@
-<p>edit-shop works!</p>
+<div class="container-fluid">
+  <app-header></app-header>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="">
+      <div class="mb-3">
+        <label for="title" class="form-label"> Shop Title </label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Shop title"
+          minlength="5"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': titleHasError() }"
+          [formControl]="shopTitle"
+        />
+        <div id="titleValidation" class="invalid-feedback">
+          Please enter a valid username.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label"> Shop Description </label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          placeholder="Shop Description"
+          minlength="5"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': descriptionHasError() }"
+          [formControl]="shopDescription"
+        />
+        <div id="descriptionValidation" class="invalid-feedback">
+          Please enter a valid description.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="accountId" class="form-label"> Etsy Account ID </label>
+        <input
+          type="text"
+          class="form-control"
+          id="accountId"
+          placeholder="Account ID for Etsy"
+          minlength="5"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': false }"
+          [formControl]="etsyAccountID"
+        />
+        <div id="etsyAccountIDValidation" class="invalid-feedback">
+          Please enter a valid etsy account id.
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" (click)="onEdit()" [disabled]="formHasError()">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
