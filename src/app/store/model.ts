@@ -12,10 +12,23 @@ export interface UserDetails {
 }
 
 export interface Shop {
+  createdBy?: string
+  createdDate?: number
+  lastModifiedBy?: string
+  lastModifiedDate?: string
   description: string
   etsyAccountId: string
-  id: number
   title: string
+  id: number
+}
+
+export interface Provider {
+  createdBy?: string
+  createdDate?: number
+  lastModifiedBy?: string
+  lastModifiedDate?: string
+  title: string
+  id: number
 }
 
 export interface InitialStateType {
