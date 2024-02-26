@@ -11,6 +11,8 @@ export const environment = {
       login: '/authenticate/login',
       getAllShops: '/shop/get-all-without-page',
       createShop: '/shop',
+      getAllProviders: '/provider/get-all-without-page',
+      createProvider: '/provider',
     }
   }
 };
