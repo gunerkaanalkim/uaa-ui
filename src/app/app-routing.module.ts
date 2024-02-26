@@ -6,6 +6,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {SplashComponent} from "./pages/splash/splash.component";
 import {NewShopComponent} from "./pages/shop/new-shop/new-shop.component";
 import {EditShopComponent} from "./pages/shop/edit-shop/edit-shop.component";
+import {ListProviderComponent} from "./pages/provider/list-provider/list-provider.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'splash', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'shop/new', component: NewShopComponent},
   {path: 'shop/edit/:shopId', component: EditShopComponent},
+  {path: 'provider', component: ListProviderComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent}
 ];
