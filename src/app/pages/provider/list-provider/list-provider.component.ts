@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProviderService} from "../../../services/provider.service";
+import {Provider} from "../../../store/model";
 
 @Component({
   selector: 'app-list-provider',
@@ -9,6 +10,7 @@ import {ProviderService} from "../../../services/provider.service";
 })
 export class ListProviderComponent implements OnInit {
   shopId: number = 0;
+  providers: Provider[] = [];
 
   constructor(private readonly route: ActivatedRoute,
               private readonly router: Router,
@@ -20,7 +22,6 @@ export class ListProviderComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.shopId = params['shopID'];
     });
-
 
     this.getAllProviders();
   }
