@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {APP_CONFIG} from "../config/tokens";
 import {HttpClient} from "@angular/common/http";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
-import {Shop} from "../store/model";
+import {Provider} from "../store/model";
 import {catchError} from "rxjs";
 
 @Injectable({
@@ -18,31 +18,31 @@ export class ProviderService {
 
   getAll() {
     return this.httpClient
-      .get<Shop[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getAllShops}`)
+      .get<Provider[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getAllProviders}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 
   getById(id: number) {
     return this.httpClient
-      .get<Shop>(`${this.config.api.services.integrator}${this.config.api.endpoints.createShop}/${id}`)
+      .get<Provider>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProvider}/${id}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 
-  create(shop: Shop) {
+  create(provider: Provider) {
     return this.httpClient
-      .post<Shop>(`${this.config.api.services.integrator}${this.config.api.endpoints.createShop}`, shop)
+      .post<Provider>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProvider}`, provider)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 
-  edit(shop: Shop) {
+  edit(provider: Provider) {
     return this.httpClient
-      .put<Shop>(`${this.config.api.services.integrator}${this.config.api.endpoints.createShop}`, shop)
+      .put<Provider>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProvider}`, provider)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 
   destroy(id: number) {
     return this.httpClient
-      .delete<Shop>(`${this.config.api.services.integrator}${this.config.api.endpoints.createShop}/${id}`)
+      .delete<Provider>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProvider}/${id}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 }
