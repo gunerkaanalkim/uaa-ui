@@ -22,6 +22,7 @@ import {EditShopComponent} from './pages/shop/edit-shop/edit-shop.component';
 import {ListShopComponent} from './pages/shop/list-shop/list-shop.component';
 import {DeleteShopComponent} from './pages/shop/delete-shop/delete-shop.component';
 import { ListProviderComponent } from './pages/provider/list-provider/list-provider.component';
+import { ProviderDetailComponent } from './pages/provider/provider-detail/provider-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ListProviderComponent } from './pages/provider/list-provider/list-provi
     EditShopComponent,
     ListShopComponent,
     DeleteShopComponent,
-    ListProviderComponent
+    ListProviderComponent,
+    ProviderDetailComponent,
   ],
   imports: [
     BrowserModule,
