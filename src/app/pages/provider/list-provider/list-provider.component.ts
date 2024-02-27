@@ -30,7 +30,11 @@ export class ListProviderComponent implements OnInit {
     this.providerService
       .getAll()
       .subscribe(providers=>{
-        console.log(providers)
+        this.providers = providers;
       })
+  }
+
+  onNavigateToProviderDetails(providerAlias: string) {
+    this.router.navigate(['provider/detail', {providerAlias: providerAlias}])
   }
 }
