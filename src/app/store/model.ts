@@ -27,6 +27,7 @@ export interface Provider {
   createdDate?: number
   lastModifiedBy?: string
   lastModifiedDate?: string
+  providerAlias: string
   title: string
   id: number
 }
