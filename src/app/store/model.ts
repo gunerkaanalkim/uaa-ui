@@ -32,6 +32,38 @@ export interface Provider {
   id: number
 }
 
+export interface Brand {
+  id: any
+  providerAlias: string
+  brandId: number
+  brandName: string
+  slug: string
+}
+
+export interface Product {
+  providerAlias: string
+  productId: number
+  title: string
+  currency: string
+  price: string
+  weight: string
+  status: string
+  isFeatured: number
+  isVerified: number
+  stockCount: number
+  titleSlug: string
+  productColor: string
+  details: string
+  shortDescription: any
+  stockCode: string
+  gender: string
+  barcode: string
+  featureImage: string
+  brand: string
+  brandId: string
+  productTypeId: string
+}
+
 export interface InitialStateType {
   userDetails: UserDetails,
   shops: Shop[]
