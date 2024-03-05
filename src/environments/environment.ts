@@ -13,6 +13,10 @@ export const environment = {
       createShop: '/shop',
       getAllProviders: '/provider/get-all-without-page',
       createProvider: '/provider',
+      getAllBrands: '/integration/get-all-brands',
+      getAllCategories: '/integration/get-all-categories',
+      getProductsByBrand: '/integration/get-products-by-brand',
+      getProductsByCategory: '/integration/get-products-by-category',
     }
   }
 };
