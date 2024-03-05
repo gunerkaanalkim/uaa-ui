@@ -5,7 +5,7 @@
   </p>
   <ol class="list-group list-group-numbered">
     <li *ngFor="let provider of providers"
-        (click)="onNavigateToProviderDetails(provider.providerAlias)"
+        (click)="onNavigateToProviderDetails(provider.providerAlias.toLowerCase())"
         class="list-group-item d-flex justify-content-between align-items-start">
       <div class="ms-2 me-auto">
         <div class="fw-bold">{{provider.title}}</div>
