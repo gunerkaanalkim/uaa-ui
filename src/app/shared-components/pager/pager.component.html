@@ -1,0 +1,8 @@
+<div class="input-group">
+  <span class="input-group-text">Page(Total Record: {{total}})</span>
+  <select class="form-control"
+          (change)="_onClick($event)"
+  >
+    <option *ngFor="let item of datasource; let  i = index" [value]="normalizeIndex(i)">{{normalizeIndex(i)}}</option>
+  </select>
+</div>
