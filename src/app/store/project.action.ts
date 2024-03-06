@@ -20,6 +20,11 @@ export const setSingleShop = createAction(
   props<{ shop: Shop }>()
 );
 
+export const setLoaderVisible = createAction(
+  "[Header Component] SetLoaderVisible",
+  props<{ isLoaderVisible: boolean }>()
+);
+
 export const LOGOUT = createAction(
   "LOGOUT",
 );

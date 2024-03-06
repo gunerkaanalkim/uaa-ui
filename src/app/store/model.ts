@@ -40,6 +40,14 @@ export interface Brand {
   slug: string
 }
 
+export interface ProductResponse {
+  products: Product[]
+  currentPage: number
+  lastPage: number,
+  perPage: number
+  total: number
+}
+
 export interface Product {
   providerAlias: string
   productId: number
@@ -66,5 +74,13 @@ export interface Product {
 
 export interface InitialStateType {
   userDetails: UserDetails,
-  shops: Shop[]
+  shops: Shop[],
+  isLoaderVisible : boolean
+}
+
+export interface Pagination {
+  currentPage: number
+  lastPage: number,
+  perPage: number
+  total: number
 }

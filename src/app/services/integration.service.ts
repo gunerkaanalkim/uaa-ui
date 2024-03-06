@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {APP_CONFIG} from "../config/tokens";
 import {HttpClient} from "@angular/common/http";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
-import {Brand, Product} from "../store/model";
+import {Brand, ProductResponse} from "../store/model";
 import {catchError} from "rxjs";
 
 @Injectable({
@@ -25,7 +25,7 @@ export class IntegrationService {
 
   getProductsByBrand(providerAlias: string, brandId: number) {
     return this.httpClient
-      .get<Product[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductsByBrand}/${providerAlias}/${brandId}`)
+      .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductsByBrand}/${providerAlias}/${brandId}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 }
