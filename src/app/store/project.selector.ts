@@ -19,3 +19,8 @@ export const selectShops = createSelector(
   selectState,
   (state: fromProject.InitialStateType) => state.shops
 )
+
+export const selectLoaderState = createSelector(
+  selectState,
+  (state: fromProject.InitialStateType) => state.isLoaderVisible
+)
