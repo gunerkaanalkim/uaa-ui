@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {IntegrationService} from "../../../services/integration.service";
-import {Brand, ProductResponse} from "../../../store/model";
+import {Brand} from "../../../store/model";
 import {Store} from "@ngrx/store";
 import {setLoaderVisible} from "../../../store/project.action";
 
@@ -12,8 +12,8 @@ import {setLoaderVisible} from "../../../store/project.action";
 })
 export class ProviderDetailComponent implements OnInit {
   providerAlias: string = '';
+  brandId: number | null = null;
   brands: Brand[] = [];
-  productResponse: ProductResponse | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -42,17 +42,7 @@ export class ProviderDetailComponent implements OnInit {
   }
 
   getProductsByBrand(brandId: number) {
-    this.store.dispatch(setLoaderVisible({isLoaderVisible: true}))
-
-    this.integrationService
-      .getProductsByBrand(this.providerAlias, brandId)
-      .subscribe(productResponse => {
-        this.productResponse = productResponse;
-        this.store.dispatch(setLoaderVisible({isLoaderVisible: false}))
-      })
-  }
-
-  navigateToPage(page: number) {
-    this.router.navigate(['provider/detail', {providerAlias: this.providerAlias, page: page}])
+    this.brandId = brandId;
+    this.router.navigate(['brand/detail', {providerAlias: this.providerAlias, brandId: this.brandId, page: 1}])
   }
 }

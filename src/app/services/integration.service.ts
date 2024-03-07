@@ -23,9 +23,9 @@ export class IntegrationService {
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 
-  getProductsByBrand(providerAlias: string, brandId: number) {
+  getProductsByBrand(providerAlias: string, brandId: number, page: number) {
     return this.httpClient
-      .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductsByBrand}/${providerAlias}/${brandId}`)
+      .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductsByBrand}/${providerAlias}/${brandId}/${page}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 }

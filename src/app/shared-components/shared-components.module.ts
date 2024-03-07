@@ -5,6 +5,8 @@ import {BrandComponent} from './brand/brand.component';
 import {ProductComponent} from './product/product.component';
 import { PagerComponent } from './pager/pager.component';
 import { LoaderComponent } from './loader/loader.component';
+import { ProductImagesComponent } from './product-images/product-images.component';
+import { ProductDetailsTableComponent } from './product-details-table/product-details-table.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { LoaderComponent } from './loader/loader.component';
         ProductComponent,
         PagerComponent,
         LoaderComponent,
+        ProductImagesComponent,
+        ProductDetailsTableComponent,
     ],
   exports: [
     HeaderComponent,
