@@ -70,6 +70,12 @@ export interface Product {
   brand: string
   brandId: string
   productTypeId: string
+  images: ProductImage[]
+}
+
+export interface ProductImage {
+  imagePath: string,
+  productId: number
 }
 
 export interface InitialStateType {
