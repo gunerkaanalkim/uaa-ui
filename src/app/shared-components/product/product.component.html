@@ -1,49 +1,41 @@
 <p class="h3">
   <span>Products</span>
 </p>
-<div class="card mb-3" *ngFor="let product of products">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img [src]="product.featureImage" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{product.title}}</h5>
-        <p class="card-text" [innerHTML]="product.details"></p>
-        <p class="card-text"><b>Short Description : </b>{{product.shortDescription}}</p>
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-            <tr>
-              <th>Color</th>
-              <th>Gender</th>
-              <th>Brand</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>{{product.productColor}}</td>
-              <td>{{product.gender}}</td>
-              <td>{{product.brand}}</td>
-            </tr>
-            </tbody>
-            <thead>
-            <tr>
-              <th>Price</th>
-              <th>Stock Code</th>
-              <th>Stock Count</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>{{product.price}} {{product.currency}}</td>
-              <td>{{product.stockCode}}</td>
-              <td>{{product.stockCount}}</td>
-            </tr>
-            </tbody>
-          </table>
+<div class="row">
+  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6" *ngFor="let product of products">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <a (click)="onImagesOpen(product.productId)"
+             data-bs-toggle="modal" data-bs-target="#productImagesModal">
+            <img [src]="product.featureImage" class="img-fluid rounded-start" alt="...">
+          </a>
         </div>
-        <!--        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>-->
+        <div class="col-md-8">
+          <div class="card-body">
+            <app-product-details-table [product]="product"></app-product-details-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="productImagesModal" tabindex="-1" aria-labelledby="productImagesModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="productImagesModalLabel">Images</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-product-images [productImages]="productImages">
+        </app-product-images>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
