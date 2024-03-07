@@ -8,6 +8,7 @@ import {NewShopComponent} from "./pages/shop/new-shop/new-shop.component";
 import {EditShopComponent} from "./pages/shop/edit-shop/edit-shop.component";
 import {ListProviderComponent} from "./pages/provider/list-provider/list-provider.component";
 import {ProviderDetailComponent} from "./pages/provider/provider-detail/provider-detail.component";
+import {BrandDetailComponent} from "./pages/brand-detail/brand-detail.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'splash', pathMatch: 'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'shop/edit/:shopId', component: EditShopComponent},
   {path: 'provider', component: ListProviderComponent},
   {path: 'provider/detail', component: ProviderDetailComponent},
+  {path: 'brand/detail', component: BrandDetailComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent}
 ];
