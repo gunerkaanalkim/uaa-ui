@@ -1,29 +1,10 @@
 <div class="container-fluid">
   <app-header></app-header>
   <div class="row">
-    <div class="col-3">
+    <div class="col-12">
       <app-brand [brands]="brands"
                  (onClick)="getProductsByBrand($event)">
       </app-brand>
-    </div>
-    <div class="col-9">
-      <app-pager *ngIf="productResponse"
-                 [currentPage]="productResponse.currentPage"
-                 [lastPage]="productResponse.lastPage"
-                 [perPage]="productResponse.perPage"
-                 [total]="productResponse.total"
-                 (onSelect)="navigateToPage($event)"
-      ></app-pager>
-      <app-product *ngIf="productResponse"
-                   [products]="productResponse.products">
-      </app-product>
-      <app-pager *ngIf="productResponse"
-                 [currentPage]="productResponse.currentPage"
-                 [lastPage]="productResponse.lastPage"
-                 [perPage]="productResponse.perPage"
-                 [total]="productResponse.total"
-                 (onSelect)="navigateToPage($event)"
-      ></app-pager>
     </div>
   </div>
 
