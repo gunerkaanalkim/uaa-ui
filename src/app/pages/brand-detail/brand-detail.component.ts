@@ -46,6 +46,6 @@ export class BrandDetailComponent implements OnInit {
   }
 
   onPageSelect(page: number) {
-    this.router.navigate(['brand/detail', {providerAlias: this.providerAlias, page: page, brandId: this.brandId}])
+    this.router.navigate(['brand/detail', {providerAlias: this.providerAlias, brandId: this.brandId, page: page}])
   }
 }
