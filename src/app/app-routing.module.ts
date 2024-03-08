@@ -9,6 +9,7 @@ import {EditShopComponent} from "./pages/shop/edit-shop/edit-shop.component";
 import {ListProviderComponent} from "./pages/provider/list-provider/list-provider.component";
 import {ProviderDetailComponent} from "./pages/provider/provider-detail/provider-detail.component";
 import {BrandDetailComponent} from "./pages/brand-detail/brand-detail.component";
+import {CategoryDetailsComponent} from "./pages/category-details/category-details.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'splash', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'provider', component: ListProviderComponent},
   {path: 'provider/detail', component: ProviderDetailComponent},
   {path: 'brand/detail', component: BrandDetailComponent},
+  {path: 'category/detail', component: CategoryDetailsComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent}
 ];
