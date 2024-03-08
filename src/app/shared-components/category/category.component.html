@@ -1,0 +1,12 @@
+<p class="h3">
+  <span>Categories</span>
+</p>
+<ol class="list-group list-group-numbered">
+  <li *ngFor="let category of categories"
+      (click)="_getProducts(category.categoryId)"
+      class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">{{category.title.toUpperCase()}}</div>
+    </div>
+  </li>
+</ol>
