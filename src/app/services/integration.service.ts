@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {APP_CONFIG} from "../config/tokens";
 import {HttpClient} from "@angular/common/http";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
-import {Brand, ProductResponse} from "../store/model";
+import {Brand, Category, ProductResponse} from "../store/model";
 import {catchError} from "rxjs";
 
 @Injectable({
@@ -26,6 +26,18 @@ export class IntegrationService {
   getProductsByBrand(providerAlias: string, brandId: number, page: number) {
     return this.httpClient
       .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductsByBrand}/${providerAlias}/${brandId}/${page}`)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
+
+  getAllCategories(providerAlias: string) {
+    return this.httpClient
+      .get<Category[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getAllCategories}/${providerAlias}`)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
+
+  getProductsByCategory(providerAlias: string, categoryId: number, page: number) {
+    return this.httpClient
+      .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductsByCategory}/${providerAlias}/${categoryId}/${page}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 }
