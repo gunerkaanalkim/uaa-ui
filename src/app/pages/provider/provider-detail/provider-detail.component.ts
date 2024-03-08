@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {IntegrationService} from "../../../services/integration.service";
-import {Brand} from "../../../store/model";
+import {Brand, Category} from "../../../store/model";
 import {Store} from "@ngrx/store";
 import {setLoaderVisible} from "../../../store/project.action";
 
@@ -13,7 +13,9 @@ import {setLoaderVisible} from "../../../store/project.action";
 export class ProviderDetailComponent implements OnInit {
   providerAlias: string = '';
   brandId: number | null = null;
+  categoryId: number | null = null;
   brands: Brand[] = [];
+  categories: Category[] = [];
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -28,6 +30,7 @@ export class ProviderDetailComponent implements OnInit {
       this.providerAlias = params['providerAlias'];
 
       this.getAllBrands(this.providerAlias);
+      this.getAllCategories(this.providerAlias);
     });
   }
 
@@ -41,8 +44,23 @@ export class ProviderDetailComponent implements OnInit {
       })
   }
 
+  getAllCategories(providerAlias: string) {
+    this.store.dispatch(setLoaderVisible({isLoaderVisible: true}))
+    this.integrationService
+      .getAllCategories(providerAlias)
+      .subscribe(categories => {
+        this.categories = categories;
+        this.store.dispatch(setLoaderVisible({isLoaderVisible: false}))
+      })
+  }
+
   getProductsByBrand(brandId: number) {
     this.brandId = brandId;
     this.router.navigate(['brand/detail', {providerAlias: this.providerAlias, brandId: this.brandId, page: 1}])
+  }
+
+  getProductsByCategory(categoryId: number) {
+    this.categoryId = categoryId;
+    this.router.navigate(['category/detail', {providerAlias: this.providerAlias, categoryId: this.categoryId, page: 1}])
   }
 }

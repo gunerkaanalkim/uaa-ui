@@ -1,19 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
+import {ProductResponse} from "../../store/model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IntegrationService} from "../../services/integration.service";
 import {Store} from "@ngrx/store";
 import {setLoaderVisible} from "../../store/project.action";
-import {ProductResponse} from "../../store/model";
 
 @Component({
-  selector: 'app-brand-detail',
-  templateUrl: './brand-detail.component.html',
-  styleUrls: ['./brand-detail.component.scss']
+  selector: 'app-category-details',
+  templateUrl: './category-details.component.html',
+  styleUrls: ['./category-details.component.scss']
 })
-export class BrandDetailComponent implements OnInit {
+export class CategoryDetailsComponent {
   providerAlias: string = '';
   page: number = 1;
-  brandId!: number;
+  categoryId!: number;
   productResponse: ProductResponse | null = null;
 
   constructor(
@@ -28,9 +28,9 @@ export class BrandDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.providerAlias = params['providerAlias'];
       this.page = params['page'];
-      this.brandId = params['brandId'];
+      this.categoryId = params['categoryId'];
 
-        this.getProductsByBrand(this.brandId);
+      this.getProductsByBrand(this.categoryId);
     });
   }
 
@@ -38,7 +38,7 @@ export class BrandDetailComponent implements OnInit {
     this.store.dispatch(setLoaderVisible({isLoaderVisible: true}))
 
     this.integrationService
-      .getProductsByBrand(this.providerAlias, brandId, this.page)
+      .getProductsByCategory(this.providerAlias, brandId, this.page)
       .subscribe(productResponse => {
         this.productResponse = productResponse;
         this.store.dispatch(setLoaderVisible({isLoaderVisible: false}))
@@ -46,6 +46,6 @@ export class BrandDetailComponent implements OnInit {
   }
 
   onPageSelect(page: number) {
-    this.router.navigate(['brand/detail', {providerAlias: this.providerAlias, brandId: this.brandId, page: page}])
+    this.router.navigate(['category/detail', {providerAlias: this.providerAlias, categoryId: this.categoryId, page: page}])
   }
 }

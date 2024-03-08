@@ -14,7 +14,5 @@ export class ProductComponent {
       this.productImages =  this.products
         .filter(product=>product.productId === productId)[0]
         .images;
-
-    console.log(this.productImages)
   }
 }

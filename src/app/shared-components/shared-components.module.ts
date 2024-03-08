@@ -7,6 +7,7 @@ import { PagerComponent } from './pager/pager.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ProductImagesComponent } from './product-images/product-images.component';
 import { ProductDetailsTableComponent } from './product-details-table/product-details-table.component';
+import { CategoryComponent } from './category/category.component';
 
 
 @NgModule({
@@ -18,13 +19,15 @@ import { ProductDetailsTableComponent } from './product-details-table/product-de
         LoaderComponent,
         ProductImagesComponent,
         ProductDetailsTableComponent,
+        CategoryComponent,
     ],
   exports: [
     HeaderComponent,
     BrandComponent,
     ProductComponent,
     PagerComponent,
-    LoaderComponent
+    LoaderComponent,
+    CategoryComponent
   ],
     imports: [
         CommonModule

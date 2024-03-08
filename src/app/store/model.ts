@@ -90,3 +90,12 @@ export interface Pagination {
   perPage: number
   total: number
 }
+
+export interface Category {
+  id: any
+  providerAlias: string
+  categoryId: number
+  title: string
+  slug: string
+  weight: string
+}
