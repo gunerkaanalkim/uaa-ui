@@ -10,6 +10,7 @@
                  (onSelect)="onPageSelect($event)"
       ></app-pager>
       <app-product *ngIf="productResponse"
+                   [providerAlias]="providerAlias"
                    [products]="productResponse.products">
       </app-product>
       <app-pager *ngIf="productResponse"
