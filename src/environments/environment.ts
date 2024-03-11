@@ -17,6 +17,9 @@ export const environment = {
       getAllCategories: '/integration/get-all-categories',
       getProductsByBrand: '/integration/get-products-by-brand',
       getProductsByCategory: '/integration/get-products-by-category',
+      addToProductDb : '/integration/add-to-product-db',
+      createProduct: '/product',
+      getAllProducts: '/product/get-all-without-page',
     }
   }
 };
