@@ -40,4 +40,12 @@ export class IntegrationService {
       .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductsByCategory}/${providerAlias}/${categoryId}/${page}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
+
+  addToProductDb(providerAlias: string, productId: number) {
+    return this.httpClient
+      .post<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.addToProductDb}/${providerAlias}`, {
+        productId: productId
+      })
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
 }
