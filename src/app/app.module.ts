@@ -25,6 +25,7 @@ import { ListProviderComponent } from './pages/provider/list-provider/list-provi
 import { ProviderDetailComponent } from './pages/provider/provider-detail/provider-detail.component';
 import { BrandDetailComponent } from './pages/brand-detail/brand-detail.component';
 import { CategoryDetailsComponent } from './pages/category-details/category-details.component';
+import { ProductDBComponent } from './pages/product-db/product-db.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CategoryDetailsComponent } from './pages/category-details/category-deta
     ProviderDetailComponent,
     BrandDetailComponent,
     CategoryDetailsComponent,
+    ProductDBComponent,
   ],
   imports: [
     BrowserModule,
