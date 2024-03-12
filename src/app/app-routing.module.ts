@@ -10,6 +10,7 @@ import {ListProviderComponent} from "./pages/provider/list-provider/list-provide
 import {ProviderDetailComponent} from "./pages/provider/provider-detail/provider-detail.component";
 import {BrandDetailComponent} from "./pages/brand-detail/brand-detail.component";
 import {CategoryDetailsComponent} from "./pages/category-details/category-details.component";
+import {ProductDBComponent} from "./pages/product-db/product-db.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'splash', pathMatch: 'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'provider/detail', component: ProviderDetailComponent},
   {path: 'brand/detail', component: BrandDetailComponent},
   {path: 'category/detail', component: CategoryDetailsComponent},
+  {path: 'product-database', component: ProductDBComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent}
 ];

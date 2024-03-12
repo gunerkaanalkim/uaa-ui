@@ -19,7 +19,7 @@ export const environment = {
       getProductsByCategory: '/integration/get-products-by-category',
       addToProductDb : '/integration/add-to-product-db',
       createProduct: '/product',
-      getAllProducts: '/product/get-all-without-page',
+      getAllProducts: '/product/get-all',
     }
   }
 };
