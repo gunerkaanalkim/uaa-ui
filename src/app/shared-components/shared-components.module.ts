@@ -8,6 +8,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { ProductImagesComponent } from './product-images/product-images.component';
 import { ProductDetailsTableComponent } from './product-details-table/product-details-table.component';
 import { CategoryComponent } from './category/category.component';
+import {RouterLink} from "@angular/router";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CategoryComponent } from './category/category.component';
     CategoryComponent
   ],
     imports: [
-        CommonModule
+        CommonModule,
+        RouterLink
     ]
 })
 export class SharedComponentsModule { }
