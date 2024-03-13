@@ -2,7 +2,15 @@ import {Inject, Injectable} from '@angular/core';
 import {APP_CONFIG} from "../config/tokens";
 import {HttpClient} from "@angular/common/http";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
-import {Brand, Category, ProductResponse} from "../store/model";
+import {
+  Brand,
+  Category,
+  Product,
+  ProductImage,
+  ProductResponse,
+  ProductVariant,
+  ProductVariantOption
+} from "../store/model";
 import {catchError} from "rxjs";
 
 @Injectable({
@@ -43,8 +51,35 @@ export class IntegrationService {
 
   addToProductDb(providerAlias: string, productId: number) {
     return this.httpClient
-      .post<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.addToProductDb}/${providerAlias}`, {
+      .post<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.addToProductDb}/${providerAlias}`, {
         productId: productId
+      })
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
+
+  saveProductImages(productId: number, images: ProductImage[]) {
+    return this.httpClient
+      .post<ProductImage[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.saveProductImages}`, {
+        productId: productId,
+        images: images
+      })
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
+
+  saveProductVariants(productId: number, variants: ProductVariant[]) {
+    return this.httpClient
+      .post<ProductVariant[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.saveProductVariants}`, {
+        productId: productId,
+        variants: variants
+      })
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
+
+  saveProductVariantOptions(productId: number, providerAlias: string) {
+    return this.httpClient
+      .post<ProductVariantOption[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.saveProductVariantOptions}`, {
+        productId: productId,
+        providerAlias: providerAlias
       })
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }

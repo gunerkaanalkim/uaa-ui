@@ -70,7 +70,8 @@ export interface Product {
   brand: string
   brandId: string
   productTypeId: string
-  images: ProductImage[]
+  images: ProductImage[],
+  variants: ProductVariant[],
 }
 
 export interface ProductImage {
@@ -99,3 +100,23 @@ export interface Category {
   slug: string
   weight: string
 }
+
+export interface ProductVariant {
+  id: any
+  product: any
+  stockCode: any
+  barcode: string
+  stockCount: number
+  stockId: number
+  options: ProductVariantOption[]
+}
+
+export interface ProductVariantOption {
+  id: any
+  product: any
+  optionValue: string
+  optionId: string
+  optionVariantId: any
+  optionTitle: any
+}
+

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PagerComponent } from './pager.component';
+import {PagerComponent} from './pager.component';
 
 describe('PagerComponent', () => {
   let component: PagerComponent;
