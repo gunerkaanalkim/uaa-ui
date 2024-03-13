@@ -1,13 +1,22 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse} from "@angular/common/http";
 import {throwError} from "rxjs";
+import {Store} from "@ngrx/store";
+import {setLoaderVisible} from "../store/project.action";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalExceptionHandlerService {
 
+
+  constructor(
+    private readonly store: Store
+  ) {
+  }
+
   public handleError(error: HttpErrorResponse) {
+    this.store.dispatch(setLoaderVisible({isLoaderVisible: false}));
 
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
