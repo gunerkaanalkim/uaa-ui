@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ProductResponse} from "../../store/model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IntegrationService} from "../../services/integration.service";
