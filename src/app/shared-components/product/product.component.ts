@@ -1,6 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {Product, ProductImage} from "../../store/model";
 import {IntegrationService} from "../../services/integration.service";
+import {Store} from "@ngrx/store";
+import {setLoaderVisible} from "../../store/project.action";
 
 @Component({
   selector: 'app-product',
@@ -12,9 +14,9 @@ export class ProductComponent {
   @Input() providerAlias: string = "";
   productImages: ProductImage[] = [];
 
-
   constructor(
-    private readonly integrationService: IntegrationService
+    private readonly integrationService: IntegrationService,
+    private readonly store: Store
   ) {
   }
 
@@ -25,10 +27,18 @@ export class ProductComponent {
   }
 
   addToProductDB(productId: number) {
+    this.store.dispatch(setLoaderVisible({isLoaderVisible: true}));
+
     this.integrationService
       .addToProductDb(this.providerAlias, productId)
-      .subscribe(response=>{
-        console.log(response);
-      })
+      .subscribe(productResponse => {
+        this.integrationService.saveProductImages(productResponse.productId, productResponse.images).subscribe();
+        this.integrationService.saveProductVariants(productResponse.productId, productResponse.variants).subscribe(productVariants => {
+          this.integrationService.saveProductVariantOptions(productResponse.productId, this.providerAlias).subscribe();
+
+          this.store.dispatch(setLoaderVisible({isLoaderVisible: false}));
+        });
+      });
   }
+
 }
