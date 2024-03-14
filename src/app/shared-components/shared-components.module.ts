@@ -12,27 +12,29 @@ import {RouterLink} from "@angular/router";
 
 
 @NgModule({
-    declarations: [
-        HeaderComponent,
-        BrandComponent,
-        ProductComponent,
-        PagerComponent,
-        LoaderComponent,
-        ProductImagesComponent,
-        ProductDetailsTableComponent,
-        CategoryComponent,
-    ],
+  declarations: [
+    HeaderComponent,
+    BrandComponent,
+    ProductComponent,
+    PagerComponent,
+    LoaderComponent,
+    ProductImagesComponent,
+    ProductDetailsTableComponent,
+    CategoryComponent,
+  ],
   exports: [
     HeaderComponent,
     BrandComponent,
     ProductComponent,
     PagerComponent,
     LoaderComponent,
-    CategoryComponent
+    ProductImagesComponent,
+    ProductDetailsTableComponent,
+    CategoryComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterLink
-    ]
+  imports: [
+    CommonModule,
+    RouterLink
+  ]
 })
 export class SharedComponentsModule { }
