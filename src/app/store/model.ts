@@ -49,6 +49,7 @@ export interface ProductResponse {
 }
 
 export interface Product {
+  id: number
   providerAlias: string
   productId: number
   title: string
@@ -85,13 +86,6 @@ export interface InitialStateType {
   isLoaderVisible : boolean
 }
 
-export interface Pagination {
-  currentPage: number
-  lastPage: number,
-  perPage: number
-  total: number
-}
-
 export interface Category {
   id: any
   providerAlias: string
@@ -120,3 +114,30 @@ export interface ProductVariantOption {
   optionTitle: any
 }
 
+export interface PageableProducts {
+  content: Product[],
+  first: boolean,
+  last: boolean
+  number : number,
+  numberOfElements: number,
+  size: 10,
+  totalElements: number,
+  totalPages: number,
+  pageable: Pageable
+  sort: PageableSort
+}
+
+export interface Pageable {
+  sort: PageableSort,
+  offset: number,
+  pageNumber: number
+  pageSize: number
+  paged: number
+  unpaged: number
+}
+
+export interface PageableSort {
+  empty: boolean
+  sorted: boolean
+  unsorted: boolean
+}

@@ -23,6 +23,7 @@ export const environment = {
       addToProductDb : '/integration/add-to-product-db',
       createProduct: '/product',
       getAllProducts: '/product/get-all',
+      getProductImages: '/product/images',
     }
   }
 };
