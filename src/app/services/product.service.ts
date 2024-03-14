@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {APP_CONFIG} from "../config/tokens";
 import {HttpClient} from "@angular/common/http";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
-import {Product} from "../store/model";
+import {PageableProducts, Product, ProductImage} from "../store/model";
 import {catchError} from "rxjs";
 
 @Injectable({
@@ -18,9 +18,15 @@ export class ProductService {
   ) {
   }
 
-  getAll() {
+  getAll(pageNo : number) {
     return this.httpClient
-      .get<Product[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getAllProducts}`)
+      .get<PageableProducts>(`${this.config.api.services.integrator}${this.config.api.endpoints.getAllProducts}?pageNo=${pageNo}`)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+  }
+
+  getProductImages(productId: number) {
+    return this.httpClient
+      .get<ProductImage[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductImages}/${productId}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 
