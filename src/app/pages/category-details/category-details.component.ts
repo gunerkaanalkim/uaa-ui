@@ -3,7 +3,6 @@ import {ProductResponse} from "../../store/model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IntegrationService} from "../../services/integration.service";
 import {Store} from "@ngrx/store";
-import {setLoaderVisible} from "../../store/project.action";
 
 @Component({
   selector: 'app-category-details',
@@ -35,13 +34,13 @@ export class CategoryDetailsComponent {
   }
 
   getProductsByBrand(brandId: number) {
-    this.store.dispatch(setLoaderVisible({isLoaderVisible: true}))
+
 
     this.integrationService
       .getProductsByCategory(this.providerAlias, brandId, this.page)
       .subscribe(productResponse => {
         this.productResponse = productResponse;
-        this.store.dispatch(setLoaderVisible({isLoaderVisible: false}))
+
       })
   }
 
