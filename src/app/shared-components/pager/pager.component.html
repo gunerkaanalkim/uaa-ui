@@ -1,8 +1,12 @@
-<div class="input-group">
-  <span class="input-group-text">Page(Total Record: {{total}})</span>
+<div class="input-group pager">
+  <span class="input-group-text">
+    <b>
+      Select Page(Total Record: {{total}})
+    </b>
+  </span>
   <select class="form-control"
           (change)="_onClick($event)"
   >
-    <option *ngFor="let item of datasource; let  i = index" [value]="normalizeIndex(i)">{{normalizeIndex(i)}}</option>
+    <option *ngFor="let item of datasource; let  i = index" [value]="normalizeIndex(i)">Page {{normalizeIndex(i)}}</option>
   </select>
 </div>
