@@ -38,34 +38,29 @@ export class ProviderDetailComponent implements OnInit {
   getAllBrands(providerAlias: string) {
     this.spinner.show();
 
-
     this.integrationService
       .getAllBrands(providerAlias)
       .subscribe(brands => {
         this.brands = brands;
-
         this.spinner.hide();
-
       })
   }
 
   getAllCategories(providerAlias: string) {
-
     this.integrationService
       .getAllCategories(providerAlias)
       .subscribe(categories => {
         this.categories = categories;
-
       })
   }
 
-  getProductsByBrand(brandId: number) {
-    this.brandId = brandId;
-    this.router.navigate(['brand/detail', {providerAlias: this.providerAlias, brandId: this.brandId, page: 1}])
+  getProductsByBrand(brand: Brand) {
+    this.brandId = brand.brandId;
+    this.router.navigate(['brand/detail', {providerAlias: this.providerAlias, brandId: this.brandId, brandName: brand.brandName, page: 1}])
   }
 
-  getProductsByCategory(categoryId: number) {
-    this.categoryId = categoryId;
-    this.router.navigate(['category/detail', {providerAlias: this.providerAlias, categoryId: this.categoryId, page: 1}])
+  getProductsByCategory(category: Category) {
+    this.categoryId = category.categoryId;
+    this.router.navigate(['category/detail', {providerAlias: this.providerAlias, categoryId: this.categoryId, categoryName: category.title, page: 1}])
   }
 }
