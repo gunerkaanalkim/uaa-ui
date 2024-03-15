@@ -2,16 +2,10 @@
   <app-header></app-header>
   <div class="row">
     <div class="col-12">
-      <app-pager *ngIf="productResponse"
-                 [currentPage]="productResponse.currentPage"
-                 [lastPage]="productResponse.lastPage"
-                 [perPage]="productResponse.perPage"
-                 [total]="productResponse.total"
-                 (onSelect)="onPageSelect($event)"
-      ></app-pager>
-      <app-product *ngIf="productResponse"
+      <app-product-list *ngIf="productResponse"
+                   [header]="categoryName"
                    [products]="productResponse.products">
-      </app-product>
+      </app-product-list>
       <app-pager *ngIf="productResponse"
                  [currentPage]="productResponse.currentPage"
                  [lastPage]="productResponse.lastPage"

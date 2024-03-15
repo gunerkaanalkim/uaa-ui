@@ -2,17 +2,19 @@
   <app-header></app-header>
   <div class="card">
     <div class="card-header">
-      <app-pager *ngIf="products.length"
-                 [currentPage]="pageable.currentPage"
-                 [lastPage]="pageable.lastPage"
-                 [perPage]="pageable.perPage"
-                 [total]="pageable.total"
-                 (onSelect)="onPageSelect($event)"
-      ></app-pager>
+      <div class="row">
+        <div class="col-lg-4">
+          <input type="text" class="form-control" placeholder="Title">
+        </div>
+        <div class="col-lg-8">
+          <button class="btn btn-outline-primary btn-sm float-end">Search</button>
+        </div>
+      </div>
+
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table">
+        <table class="table table-hover table-bordered">
           <thead>
           <tr>
             <th scope="col"></th>
@@ -22,6 +24,7 @@
             <th scope="col">Gender</th>
             <th scope="col">Color</th>
             <th scope="col">Price</th>
+            <th scope="col"></th>
           </tr>
           </thead>
           <tbody>
@@ -43,6 +46,26 @@
             </ng-template>
             <td>{{product.productColor}}</td>
             <td>{{product.price}} {{product.currency}}</td>
+            <td>
+              <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-primary">Actions</button>
+                <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Publish to Etsy</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Remove from Etsy </a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Remove from Product Database </a></li>
+                </ul>
+              </div>
+            </td>
           </tr>
           </tbody>
           <tfoot>

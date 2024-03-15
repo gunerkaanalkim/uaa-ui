@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {IntegrationService} from "../../services/integration.service";
-import {Store} from "@ngrx/store";
 import {ProductResponse} from "../../store/model";
 import {NgxSpinnerService} from "ngx-spinner";
 
@@ -14,13 +13,13 @@ export class BrandDetailComponent implements OnInit {
   providerAlias: string = '';
   page: number = 1;
   brandId!: number;
+  brandName!: string;
   productResponse: ProductResponse | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly integrationService: IntegrationService,
-    private readonly store: Store,
     private spinner: NgxSpinnerService
   ) {
   }
@@ -30,6 +29,7 @@ export class BrandDetailComponent implements OnInit {
       this.providerAlias = params['providerAlias'];
       this.page = params['page'];
       this.brandId = params['brandId'];
+      this.brandName = params['brandName'];
 
         this.getProductsByBrand(this.brandId);
     });

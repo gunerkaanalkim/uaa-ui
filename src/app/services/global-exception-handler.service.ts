@@ -6,8 +6,6 @@ import {throwError} from "rxjs";
   providedIn: 'root'
 })
 export class GlobalExceptionHandlerService {
-
-
   constructor(
   ) {
   }

@@ -10,7 +10,7 @@ export class BrandComponent {
   @Input() brands: Brand[] = [];
   @Output() onClick = new EventEmitter();
 
-  _getProducts(brandId: number) {
-    this.onClick.emit(brandId);
+  _getProducts(brand: Brand) {
+    this.onClick.emit(brand);
   }
 }

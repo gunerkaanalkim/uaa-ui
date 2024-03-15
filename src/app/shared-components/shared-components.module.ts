@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HeaderComponent} from './header/header.component';
 import {BrandComponent} from './brand/brand.component';
-import {ProductComponent} from './product/product.component';
+import {ProductListComponent} from './product-list/product-list.component';
 import {PagerComponent} from './pager/pager.component';
 import {ProductImagesComponent} from './product-images/product-images.component';
 import {ProductDetailsTableComponent} from './product-details-table/product-details-table.component';
@@ -14,7 +14,7 @@ import {RouterLink} from "@angular/router";
   declarations: [
     HeaderComponent,
     BrandComponent,
-    ProductComponent,
+    ProductListComponent,
     PagerComponent,
     ProductImagesComponent,
     ProductDetailsTableComponent,
@@ -23,7 +23,7 @@ import {RouterLink} from "@angular/router";
   exports: [
     HeaderComponent,
     BrandComponent,
-    ProductComponent,
+    ProductListComponent,
     PagerComponent,
     ProductImagesComponent,
     ProductDetailsTableComponent,
