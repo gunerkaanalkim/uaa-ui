@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <app-header></app-header>
   <div class="row">
-    <div class="col-6">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
       <app-brand [brands]="brands"
                  (onClick)="getProductsByBrand($event)">
       </app-brand>
     </div>
-    <div class="col-6">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
       <app-category [categories]="categories"
                     (onClick)="getProductsByCategory($event)">
       </app-category>

@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {IntegrationService} from "../../../services/integration.service";
 import {Brand, Category} from "../../../store/model";
 import {Store} from "@ngrx/store";
-import {setLoaderVisible} from "../../../store/project.action";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-provider-detail',
@@ -21,7 +21,8 @@ export class ProviderDetailComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly integrationService: IntegrationService,
-    private readonly store: Store
+    private readonly store: Store,
+    private spinner: NgxSpinnerService
   ) {
   }
 
@@ -35,22 +36,26 @@ export class ProviderDetailComponent implements OnInit {
   }
 
   getAllBrands(providerAlias: string) {
-    this.store.dispatch(setLoaderVisible({isLoaderVisible: true}))
+    this.spinner.show();
+
+
     this.integrationService
       .getAllBrands(providerAlias)
       .subscribe(brands => {
         this.brands = brands;
-        this.store.dispatch(setLoaderVisible({isLoaderVisible: false}))
+
+        this.spinner.hide();
+
       })
   }
 
   getAllCategories(providerAlias: string) {
-    this.store.dispatch(setLoaderVisible({isLoaderVisible: true}))
+
     this.integrationService
       .getAllCategories(providerAlias)
       .subscribe(categories => {
         this.categories = categories;
-        this.store.dispatch(setLoaderVisible({isLoaderVisible: false}))
+
       })
   }
 

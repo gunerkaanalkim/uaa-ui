@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {Store} from "@ngrx/store";
-import {setLoaderVisible} from "../../store/project.action";
 import {Product, ProductImage} from "../../store/model";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -34,12 +33,12 @@ export class ProductDBComponent implements OnInit{
   }
 
   getAllProductsByPage(pageNo: number) {
-    this.store.dispatch(setLoaderVisible({isLoaderVisible: true}))
+
 
     this.productService
       .getAll(pageNo)
       .subscribe(pageableProducts => {
-        this.store.dispatch(setLoaderVisible({isLoaderVisible: false}))
+
         this.products = pageableProducts.content;
         this.pageable = {
           currentPage: pageableProducts.pageable.pageNumber,

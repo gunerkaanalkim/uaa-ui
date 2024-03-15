@@ -3,6 +3,7 @@ import {ShopService} from "../../services/shop.service";
 import {Store} from "@ngrx/store";
 import {setAllShops} from "../../store/project.action";
 import {Shop} from "../../store/model";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private readonly shopService: ShopService,
-    private readonly store: Store
+    private readonly store: Store,
+    private spinner: NgxSpinnerService
   ) {
   }
 
@@ -23,11 +25,13 @@ export class HomeComponent implements OnInit {
   }
 
   getAllShops() {
+    this.spinner.show();
     this.shopService
       .getAll()
       .subscribe(shops => {
         this.store.dispatch(setAllShops({shops: shops}))
         this.shops = shops;
+        this.spinner.hide();
       })
   }
 }

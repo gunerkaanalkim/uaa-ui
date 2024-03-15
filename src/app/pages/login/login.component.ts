@@ -4,6 +4,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {Store} from "@ngrx/store";
 import {setUserInfo} from "../../store/project.action";
 import {Router} from "@angular/router";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -14,21 +15,31 @@ export class LoginComponent {
   constructor(
     private readonly authenticationService: AuthenticationService,
     private readonly store: Store,
-    private readonly router: Router
+    private readonly router: Router,
+    private spinner: NgxSpinnerService
   ) {
-    this.authenticationService = authenticationService;
   }
 
-  username = new FormControl('kaanalkim', [Validators.minLength(5), Validators.maxLength(50)]);
-  password = new FormControl('1234', [Validators.minLength(8), Validators.maxLength(50)]);
+  username = new FormControl('',
+    [Validators.minLength(5),
+      Validators.maxLength(50)]
+  );
+  password = new FormControl('',
+    [Validators.minLength(4),
+      Validators.maxLength(50)]
+  );
 
   onLogin() {
     if (!this.formHasError()) {
+      this.spinner.show();
+
       this.authenticationService
         .login(this.username.value!, this.password.value!)
         .subscribe(response => {
           this.store.dispatch(setUserInfo({userDetails: response}))
           this.router.navigate(['home'])
+          this.spinner.hide();
+
         })
     }
   }

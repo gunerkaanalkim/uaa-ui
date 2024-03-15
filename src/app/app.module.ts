@@ -26,6 +26,8 @@ import {ProviderDetailComponent} from './pages/provider/provider-detail/provider
 import {BrandDetailComponent} from './pages/brand-detail/brand-detail.component';
 import {CategoryDetailsComponent} from './pages/category-details/category-details.component';
 import {ProductDBComponent} from './pages/product-db/product-db.component';
+import {NgxSpinnerModule} from "ngx-spinner";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import {ProductDBComponent} from './pages/product-db/product-db.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     SharedComponentsModule,
@@ -58,6 +61,7 @@ import {ProductDBComponent} from './pages/product-db/product-db.component';
       traceLimit: 75,
     }),
     HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [
     {
