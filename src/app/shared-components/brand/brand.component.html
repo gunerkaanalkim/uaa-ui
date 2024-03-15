@@ -1,6 +1,12 @@
-<p class="h3">
-  <span>Brands</span>
-</p>
+<div class="row">
+  <div class="col-xl-12">
+    <p class="h3">
+      <span>Brands</span>
+    </p>
+  </div>
+</div>
+<div class="divider"></div>
+
 <ol class="list-group list-group-numbered">
   <li *ngFor="let brand of brands"
       (click)="_getProducts(brand.brandId)"
