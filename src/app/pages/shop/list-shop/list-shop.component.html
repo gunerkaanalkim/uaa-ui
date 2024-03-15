@@ -1,26 +1,31 @@
-<p class="h3">
-  <span>Shops</span>
-</p>
-<a class="btn btn-primary btn-sm"
-   [routerLink]="['/shop/new']">
-  New Shop
-</a>
-<ol class="list-group list-group-numbered">
-  <li *ngFor="let shop of shops"
-      (click)="navigateToProvider(shop.id)"
-      class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">{{shop.title}}</div>
-      {{shop.description}}
-      <div class="fw-bold">Etsy Account ID : {{shop.etsyAccountId}}</div>
+<div class="row">
+  <div class="col-xl-12">
+    <h1 class="h3">
+      <span>Shops</span>
+      <a class="btn btn-outline-primary btn-sm float-end"
+         [routerLink]="['/shop/new']">
+        New Shop
+      </a>
+    </h1>
+  </div>
+</div>
+<div class="divider"></div>
+
+<div class="row">
+  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6" *ngFor="let shop of shops" (click)="navigateToProvider(shop.id)">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{shop.title}}</h5>
+        <p class="card-text">Etsy Account ID : {{shop.etsyAccountId}}</p>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group btn-group-sm d-flex" role="group">
+          <a class="btn btn-outline-primary" [routerLink]="['/shop/edit', shop.id ]">Edit</a>
+          <a class="btn btn-outline-danger" [routerLink]="['/shop/edit', shop.id ]">Delete</a>
+        </div>
+      </div>
     </div>
-    <a class="btn btn-warning btn-sm"
-       [routerLink]="['/shop/edit', shop.id ]">
-      Edit
-    </a>
-    &nbsp;&nbsp;
-    <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteShopModal" (click)="onDelete(shop.id)">Delete</a>
-  </li>
-</ol>
+  </div>
+</div>
 
 <app-delete-shop [selectedShopId]="selectedShopId"></app-delete-shop>
