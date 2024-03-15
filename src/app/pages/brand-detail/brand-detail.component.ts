@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {IntegrationService} from "../../services/integration.service";
 import {Store} from "@ngrx/store";
-import {setLoaderVisible} from "../../store/project.action";
 import {ProductResponse} from "../../store/model";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-brand-detail',
@@ -20,7 +20,8 @@ export class BrandDetailComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly integrationService: IntegrationService,
-    private readonly store: Store
+    private readonly store: Store,
+    private spinner: NgxSpinnerService
   ) {
   }
 
@@ -35,13 +36,13 @@ export class BrandDetailComponent implements OnInit {
   }
 
   getProductsByBrand(brandId: number) {
-    this.store.dispatch(setLoaderVisible({isLoaderVisible: true}))
+    this.spinner.show();
 
     this.integrationService
       .getProductsByBrand(this.providerAlias, brandId, this.page)
       .subscribe(productResponse => {
         this.productResponse = productResponse;
-        this.store.dispatch(setLoaderVisible({isLoaderVisible: false}))
+        this.spinner.hide();
       })
   }
 
