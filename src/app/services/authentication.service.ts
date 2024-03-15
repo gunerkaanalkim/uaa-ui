@@ -14,7 +14,7 @@ export class AuthenticationService {
     @Inject(APP_CONFIG) private config: any,
     private readonly httpClient: HttpClient,
     private readonly router: Router,
-    private readonly globalExceptionHandlerService: GlobalExceptionHandlerService
+    private readonly globalExceptionHandlerService: GlobalExceptionHandlerService,
   ) {
   }
 
