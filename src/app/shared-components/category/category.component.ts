@@ -10,7 +10,7 @@ export class CategoryComponent {
   @Input() categories: Category[] = [];
   @Output() onClick = new EventEmitter();
 
-  _getProducts(categoryId: number) {
-    this.onClick.emit(categoryId);
+  _getProducts(category: Category) {
+    this.onClick.emit(category);
   }
 }
