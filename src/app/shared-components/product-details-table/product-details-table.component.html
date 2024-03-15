@@ -1,37 +1,21 @@
 <div *ngIf="product">
-  <h5 class="card-title">{{product.title}}</h5>
-  <p class="card-text" [innerHTML]="product.details"></p>
-  <p class="card-text"><b>Short Description : </b>{{product.shortDescription}}</p>
+  <h5 class="card-title text-center">{{product.title}}</h5>
 </div>
-<div class="table-responsive" *ngIf="product">
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Color</th>
-      <th>Gender</th>
-      <th>Brand</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>{{product.productColor}}</td>
-      <td>{{product.gender}}</td>
-      <td>{{product.brand}}</td>
-    </tr>
-    </tbody>
-    <thead>
-    <tr>
-      <th>Price</th>
-      <th>Stock Code</th>
-      <th>Stock Count</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>{{product.price}} {{product.currency}}</td>
-      <td>{{product.stockCode}}</td>
-      <td>{{product.stockCount}}</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<dl class="row">
+  <dt class="col-6">Price</dt>
+  <dd class="col-6">
+    <span class="badge text-bg-secondary">
+      {{product?.price}} {{product?.currency}}
+    </span>
+  </dd>
+  <dt class="col-6">Color</dt>
+  <dd class="col-6">{{product?.productColor}} </dd>
+  <dt class="col-6">Gender</dt>
+  <dd class="col-6">{{product!.gender.toUpperCase()}} </dd>
+  <dt class="col-6">Brand</dt>
+  <dd class="col-6">{{product!.brand.toUpperCase()}} </dd>
+  <dt class="col-6">Stock Count</dt>
+  <dd class="col-6">{{product?.stockCount}} </dd>
+  <dt class="col-6">Stock Code</dt>
+  <dd class="col-6">{{product?.stockCode}} </dd>
+</dl>
