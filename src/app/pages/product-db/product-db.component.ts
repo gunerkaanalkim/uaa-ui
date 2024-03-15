@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product.service";
-import {Store} from "@ngrx/store";
 import {Product, ProductImage} from "../../store/model";
 import {ActivatedRoute, Router} from "@angular/router";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-product-db',
@@ -17,9 +17,9 @@ export class ProductDBComponent implements OnInit{
 
   constructor(
     private readonly productService: ProductService,
-    private readonly store: Store,
     private readonly router: Router,
     private readonly route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {
   }
 
@@ -29,11 +29,10 @@ export class ProductDBComponent implements OnInit{
 
       this.getAllProductsByPage(this.page);
     });
-
   }
 
   getAllProductsByPage(pageNo: number) {
-
+    this.spinner.show()
 
     this.productService
       .getAll(pageNo)
@@ -46,6 +45,8 @@ export class ProductDBComponent implements OnInit{
           perPage: pageableProducts.pageable.pageSize,
           total: pageableProducts.totalElements
         }
+
+        this.spinner.hide()
       })
   }
 
