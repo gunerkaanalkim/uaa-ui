@@ -16,6 +16,7 @@ export class ProviderDetailComponent implements OnInit {
   categoryId: number | null = null;
   brands: Brand[] = [];
   categories: Category[] = [];
+  shopId: number = 0;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -29,6 +30,7 @@ export class ProviderDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.providerAlias = params['providerAlias'];
+      this.shopId = params['shopId'];
 
       this.getAllBrands(this.providerAlias);
       this.getAllCategories(this.providerAlias);
@@ -56,11 +58,11 @@ export class ProviderDetailComponent implements OnInit {
 
   getProductsByBrand(brand: Brand) {
     this.brandId = brand.brandId;
-    this.router.navigate(['brand/detail', {providerAlias: this.providerAlias, brandId: this.brandId, brandName: brand.brandName, page: 1}])
+    this.router.navigate(['brand/detail', {providerAlias: this.providerAlias, shopId: this.shopId, brandId: this.brandId, brandName: brand.brandName, page: 1}])
   }
 
   getProductsByCategory(category: Category) {
     this.categoryId = category.categoryId;
-    this.router.navigate(['category/detail', {providerAlias: this.providerAlias, categoryId: this.categoryId, categoryName: category.title, page: 1}])
+    this.router.navigate(['category/detail', {providerAlias: this.providerAlias, shopId: this.shopId, categoryId: this.categoryId, categoryName: category.title, page: 1}])
   }
 }
