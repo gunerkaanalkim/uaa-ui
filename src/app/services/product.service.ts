@@ -50,7 +50,7 @@ export class ProductService {
 
   destroy(id: number) {
     return this.httpClient
-      .delete<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProduct}/${id}`)
+      .delete<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.deleteProduct}/${id}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 }

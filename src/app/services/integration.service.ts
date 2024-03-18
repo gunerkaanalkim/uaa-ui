@@ -49,10 +49,11 @@ export class IntegrationService {
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }
 
-  addToProductDb(providerAlias: string, productId: number) {
+  addToProductDb(providerAlias: string, productId: number, shopId: number) {
     return this.httpClient
       .post<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.addToProductDb}/${providerAlias}`, {
-        productId: productId
+        productId: productId,
+        shopId: shopId
       })
       .pipe(catchError(this.globalExceptionHandlerService.handleError));
   }

@@ -19,7 +19,15 @@
         </div>
       <div class="card-footer">
         <div class="btn-group btn-group d-flex">
-          <button class="btn btn-outline-primary" (click)="addToProductDB(product.productId)">Add to Product DB
+          <button class="btn btn-primary"
+                  [ngClass]="{disabled: product.saved}"
+                  (click)="addToProductDB(product.productId)">
+            Add
+          </button>
+          <button class="btn btn-danger"
+                  [ngClass]="{disabled: !product.saved}"
+                  (click)="removeFromProductDB(product.productId)">
+            Remove
           </button>
         </div>
       </div>

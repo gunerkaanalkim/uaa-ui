@@ -14,6 +14,7 @@ export class BrandDetailComponent implements OnInit {
   page: number = 1;
   brandId!: number;
   brandName!: string;
+  shopId!: number;
   productResponse: ProductResponse | null = null;
 
   constructor(
@@ -30,8 +31,9 @@ export class BrandDetailComponent implements OnInit {
       this.page = params['page'];
       this.brandId = params['brandId'];
       this.brandName = params['brandName'];
+      this.shopId = params['shopId'];
 
-        this.getProductsByBrand(this.brandId);
+      this.getProductsByBrand(this.brandId);
     });
   }
 
