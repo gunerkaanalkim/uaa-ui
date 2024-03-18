@@ -22,6 +22,7 @@ export const environment = {
       saveProductVariantOptions: '/integration/save-product-variant-options',
       addToProductDb : '/integration/add-to-product-db',
       createProduct: '/product',
+      deleteProduct: '/product/delete-by-product-id',
       getAllProducts: '/product/get-all',
       getProductImages: '/product/images',
     }
