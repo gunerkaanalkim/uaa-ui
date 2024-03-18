@@ -50,6 +50,8 @@ export interface ProductResponse {
 
 export interface Product {
   id: number
+  provider: Provider
+  shop: Shop
   providerAlias: string
   productId: number
   title: string
@@ -71,6 +73,7 @@ export interface Product {
   brand: string
   brandId: string
   productTypeId: string
+  saved: boolean
   images: ProductImage[],
   variants: ProductVariant[],
 }
