@@ -15,6 +15,7 @@ export class CategoryDetailsComponent implements OnInit {
   categoryId!: number;
   categoryName!: string;
   productResponse: ProductResponse | null = null;
+  shopId!: number;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class CategoryDetailsComponent implements OnInit {
       this.page = params['page'];
       this.categoryId = params['categoryId'];
       this.categoryName = params['categoryName'];
+      this.shopId = params['shopId'];
 
       this.getProductsByBrand(this.categoryId);
     });
