@@ -5,6 +5,7 @@
       <app-product-list *ngIf="productResponse"
                    [header]="brandName"
                    [providerAlias]="providerAlias"
+                   [shopId]="shopId"
                    [products]="productResponse.products">
       </app-product-list>
       <app-pager *ngIf="productResponse"
