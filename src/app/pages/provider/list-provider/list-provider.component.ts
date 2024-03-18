@@ -40,6 +40,6 @@ export class ListProviderComponent implements OnInit {
   }
 
   onNavigateToProviderDetails(providerAlias: string) {
-    this.router.navigate(['provider/detail', {providerAlias: providerAlias}])
+    this.router.navigate(['provider/detail', {providerAlias: providerAlias, shopId: this.shopId}])
   }
 }
