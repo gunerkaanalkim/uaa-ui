@@ -20,6 +20,8 @@
             <th scope="col"></th>
             <th scope="col">ID</th>
             <th scope="col">Brand</th>
+            <th scope="col">Shop</th>
+            <th scope="col">Provider</th>
             <th scope="col">Title</th>
             <th scope="col">Gender</th>
             <th scope="col">Color</th>
@@ -37,6 +39,8 @@
             </td>
             <td>{{product.productId}}</td>
             <td>{{product.brand.toUpperCase()}}</td>
+            <td>{{product.shop.title.toUpperCase()}}</td>
+            <td>{{product.provider.title.toUpperCase()}}</td>
             <td>{{product.title}}</td>
             <td *ngIf="product.gender === 'female'; else genderElseBlock">
               <span class="badge text-bg-danger">{{product.gender.toUpperCase()}}</span>
