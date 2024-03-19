@@ -29,3 +29,13 @@
     </div>
   </div>
 </nav>
+
+<div *ngIf="httpError" class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">Server Error!</h4>
+  <p>Status : {{httpError.status}}</p>
+  <p>Message : {{httpError.message}}</p>
+  <hr>
+  <p class="mb-0">Path : {{httpError.path}}</p>
+  <p>Timestamp : {{httpError.timestamp}}</p>
+<!--  <p class="mb-0">Trace : {{httpError.trace}}</p>-->
+</div>

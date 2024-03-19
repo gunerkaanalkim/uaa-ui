@@ -24,3 +24,8 @@ export const selectLoaderState = createSelector(
   selectState,
   (state: fromProject.InitialStateType) => state.isLoaderVisible
 )
+
+export const selectHttpError = createSelector(
+  selectState,
+  (state: fromProject.InitialStateType) => state.httpError
+)

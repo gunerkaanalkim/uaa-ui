@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse} from "@angular/common/http";
 import {throwError} from "rxjs";
+import {Store} from "@ngrx/store";
+import {setHttpError} from "../store/project.action";
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +13,22 @@ export class GlobalExceptionHandlerService {
   }
 
   public handleError(error: HttpErrorResponse) {
+    //@ts-ignore
+    this.store.dispatch(setHttpError({httpError: error.error}))
+    //@ts-ignore
+    this.spinner.hide();
 
     if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);
     } else if (error.status === 401) {
       location.replace('/login')
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
+      if (error.error.message === "401 Token not valid.") {
+        location.replace('/login')
+      }
       console.error(
         `Backend returned code ${error.status}, body was: `, error.error);
     }
-    // Return an observable with a user-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }

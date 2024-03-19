@@ -86,7 +86,17 @@ export interface ProductImage {
 export interface InitialStateType {
   userDetails: UserDetails,
   shops: Shop[],
-  isLoaderVisible : boolean
+  isLoaderVisible : boolean,
+  httpError: HttpError | null
+}
+
+export interface HttpError {
+  message: string,
+  status: number,
+  trace: string,
+  timestamp: string,
+  error: string,
+  path: string
 }
 
 export interface Category {
@@ -143,4 +153,26 @@ export interface PageableSort {
   empty: boolean
   sorted: boolean
   unsorted: boolean
+}
+
+export interface GenerateContentRequest {
+  title: string
+  details: string
+  shortDescription: string
+}
+
+export interface GenerateContentResponse {
+  choices: Choice[]
+}
+
+export interface Choice {
+  index: number
+  message: Message
+  logprobs: any
+  finish_reason: string
+}
+
+export interface Message {
+  role: string
+  content: string
 }

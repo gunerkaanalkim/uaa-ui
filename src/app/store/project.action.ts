@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {Shop, UserDetails} from "./model";
+import {HttpError, Shop, UserDetails} from "./model";
 
 export const checkUserLoggedIn = createAction(
   "[Splash Component] CheckUserLoggedIn"
@@ -27,4 +27,9 @@ export const setLoaderVisible = createAction(
 
 export const LOGOUT = createAction(
   "LOGOUT",
+);
+
+export const setHttpError = createAction(
+  "[Header Component] SetHttpError",
+  props<{ httpError: HttpError | null }>()
 );

@@ -58,7 +58,12 @@
                   <span class="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Publish to Etsy</a></li>
+                  <li (click)="setSelectedProduct(product)">
+                    <a class="dropdown-item"
+                       data-bs-toggle="modal" data-bs-target="#productDetailsModal">
+                      Publish to Etsy
+                    </a>
+                  </li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
@@ -66,7 +71,10 @@
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="#">Remove from Product Database </a></li>
+                  <li
+                    (click)="removeFromProductDB(product)">
+                    <a class="dropdown-item">Remove from Product Database </a>
+                  </li>
                 </ul>
               </div>
             </td>
@@ -108,4 +116,73 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="productDetailsModal" tabindex="-1" aria-labelledby="productDetailsModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="productDetailsModalLabel">Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3 row">
+          <label for="title" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <textarea class="form-control"
+                      id="title"
+                      [formControl]="title"
+                      minlength="5"
+                      maxlength="1000"
+                      rows="2"
+                      [ngClass]="{ 'is-invalid': titleHasError() }"
+            ></textarea>
+            <div id="titleValidation" class="invalid-feedback">
+              Please enter a valid title.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="description" class="col-sm-2 col-form-label">Details</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="description"
+                      [formControl]="details"
+                      minlength="5"
+                      maxlength="1000"
+                      rows="10"
+                      [ngClass]="{ 'is-invalid': detailsHasError() }"
+            ></textarea>
+            <div id="descriptionValidation" class="invalid-feedback">
+              Please enter a valid description.
+            </div>
+            <div [innerHTML]="generatedContent" class="bg-success"></div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="shortDescription" class="col-sm-2 col-form-label">Short Description</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="shortDescription"
+                      [formControl]="shortDescription"
+                      minlength="5"
+                      maxlength="1000"
+                      required=""
+                      rows="10"
+                      [ngClass]="{ 'is-invalid': shortDescriptionHasError() }"
+            ></textarea>
+            <div id="shortDescriptionValidation" class="invalid-feedback">
+              Please enter a valid short description.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="generateContent()">Generate Content</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="publishProduct()">Save and Publish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 

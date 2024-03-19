@@ -20,5 +20,9 @@ export const mainReducer = createImmerReducer(
   on(ProjectViewActions.setLoaderVisible, (state, {isLoaderVisible}) => {
     state.isLoaderVisible = isLoaderVisible;
     return state;
+  }),
+  on(ProjectViewActions.setHttpError, (state, {httpError}) => {
+    state.httpError = httpError;
+    return state;
   })
 );
