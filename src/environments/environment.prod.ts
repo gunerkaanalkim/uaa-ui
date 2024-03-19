@@ -21,6 +21,7 @@ export const environment = {
       saveProductVariants: '/integration/save-product-variants',
       saveProductVariantOptions: '/integration/save-product-variant-options',
       addToProductDb : '/integration/add-to-product-db',
+      generateContent : '/integration/chat-gpt/generate-content',
       createProduct: '/product',
       deleteProduct: '/product/delete-by-product-id',
       getAllProducts: '/product/get-all',
