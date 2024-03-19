@@ -5,6 +5,9 @@ import {catchError} from "rxjs";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
 import {UserDetails} from "../store/model";
 import {Router} from "@angular/router";
+import {Store} from "@ngrx/store";
+import {NgxSpinnerService} from "ngx-spinner";
+import {setHttpError} from "../store/project.action";
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +18,19 @@ export class AuthenticationService {
     private readonly httpClient: HttpClient,
     private readonly router: Router,
     private readonly globalExceptionHandlerService: GlobalExceptionHandlerService,
+    private readonly store: Store,
+    private spinner: NgxSpinnerService
   ) {
+    this.store.dispatch(setHttpError({httpError: null}))
   }
 
   whoAmI() {
     return this.httpClient
       .get<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.whoAmI}`)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
+        store: this.store,
+        spinner: this.spinner
+      })))
   }
 
 
@@ -31,7 +40,10 @@ export class AuthenticationService {
         username: username,
         password: password
       })
-      .pipe(catchError(this.globalExceptionHandlerService.handleError));
+      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
+        store: this.store,
+        spinner: this.spinner
+      })))
   }
 
 }
