@@ -29,25 +29,27 @@ export class ProductListComponent {
         .images;
   }
 
-  addToProductDB(productId: number) {
+  addToProductDB(product: Product) {
     this.spinner.show()
     this.integrationService
-      .addToProductDb(this.providerAlias, productId, this.shopId)
+      .addToProductDb(this.providerAlias, product.productId, this.shopId)
       .subscribe(productResponse => {
         this.integrationService.saveProductImages(productResponse.productId, productResponse.images).subscribe();
         this.integrationService.saveProductVariants(productResponse.productId, productResponse.variants).subscribe(productVariants => {
           this.integrationService.saveProductVariantOptions(productResponse.productId, this.providerAlias).subscribe();
+          product.saved = true;
           this.spinner.hide()
         });
       });
   }
 
-  removeFromProductDB(productId: number) {
+  removeFromProductDB(product: Product) {
     this.spinner.show()
 
     this.productService
-      .destroy(productId)
+      .destroy(product.productId)
       .subscribe(response=>{
+        product.saved = false;
         this.spinner.hide();
       })
   }
