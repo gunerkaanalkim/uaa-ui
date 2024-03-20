@@ -176,3 +176,13 @@ export interface Message {
   role: string
   content: string
 }
+
+export interface SearchOperator {
+  name: string,
+  value: string
+}
+
+export interface SearchOperatorValue {
+  operator: string,
+  data: string
+}

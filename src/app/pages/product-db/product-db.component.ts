@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product.service";
-import {Product, ProductImage} from "../../store/model";
+import {Product, ProductImage, SearchOperator, SearchOperatorValue} from "../../store/model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgxSpinnerService} from "ngx-spinner";
 import {FormControl, Validators} from "@angular/forms";
@@ -18,6 +18,20 @@ export class ProductDBComponent implements OnInit{
   pageable: any;
   page: number = 1;
   generatedContent: String = "";
+
+  operators: SearchOperator[] = [
+    {name: "Equal", value: "equal"},
+    {name: "Not Equal", value: "notEqual"},
+    {name: "Greater Than", value: "greaterThan"},
+    {name: "Greater Than Or Equal", value: "greaterThanOrEqual"},
+    {name: "Less Than", value: "lessThan"},
+    {name: "Less Than Or Equal", value: "lessThanOrEqual"},
+    {name: "Like", value: "like"},
+  ]
+
+  titleOperator = new FormControl(null,
+    [Validators.required]
+  );
 
   title = new FormControl("",
     [Validators.minLength(5),
@@ -122,13 +136,10 @@ export class ProductDBComponent implements OnInit{
       this.product!.details = this.details.value!;
       this.product!.shortDescription = this.shortDescription.value!;
 
-      console.table(this.product)
-
       this.spinner.show();
       this.productService
         .edit(this.product!)
         .subscribe(response => {
-          console.log(response)
           this.spinner.hide();
         })
     }
@@ -136,6 +147,8 @@ export class ProductDBComponent implements OnInit{
 
   generateContent() {
     if (!this.formHasError()) {
+      this.spinner.show();
+
       this.integrationService
         .generateContent({
             title: this.title.value!,
@@ -144,8 +157,17 @@ export class ProductDBComponent implements OnInit{
           }
         )
         .subscribe(generateContentResponse => {
+          this.spinner.hide();
           this.generatedContent = generateContentResponse.choices[0].message.content;
         })
     }
+  }
+
+  onTitleSearchFieldChange(searchOperatorValue : SearchOperatorValue) {
+    console.log(searchOperatorValue)
+  }
+
+  onSearch() {
+    console.log(this.titleOperator.value)
   }
 }
