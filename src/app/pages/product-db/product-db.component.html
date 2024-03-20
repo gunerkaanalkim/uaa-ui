@@ -2,12 +2,15 @@
   <app-header></app-header>
   <div class="card">
     <div class="card-header">
+      <app-search-field [label]="'ID'" (onChange)="onTitleSearchFieldChange($event)"></app-search-field>
+      <app-search-field [label]="'Brand'" (onChange)="onTitleSearchFieldChange($event)"></app-search-field>
+      <app-search-field [label]="'Title'" (onChange)="onTitleSearchFieldChange($event)"></app-search-field>
+      <app-search-field [label]="'Provider'" (onChange)="onTitleSearchFieldChange($event)"></app-search-field>
+      <app-search-field [label]="'Shop'" (onChange)="onTitleSearchFieldChange($event)"></app-search-field>
+
       <div class="row">
-        <div class="col-lg-4">
-          <input type="text" class="form-control" placeholder="Title">
-        </div>
-        <div class="col-lg-8">
-          <button class="btn btn-outline-primary btn-sm float-end">Search</button>
+        <div class="col-lg-12">
+          <button class="btn btn-outline-primary btn-sm float-end" (click)="onSearch()">Search</button>
         </div>
       </div>
 
