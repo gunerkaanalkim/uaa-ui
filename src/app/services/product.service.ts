@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {APP_CONFIG} from "../config/tokens";
 import {HttpClient} from "@angular/common/http";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
-import {PageableProducts, Product, ProductImage} from "../store/model";
+import {PageableProducts, Product, ProductImage, SearchFilterRequest} from "../store/model";
 import {catchError} from "rxjs";
 import {Store} from "@ngrx/store";
 import {NgxSpinnerService} from "ngx-spinner";
@@ -72,6 +72,15 @@ export class ProductService {
   destroy(id: number) {
     return this.httpClient
       .delete<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.deleteProduct}/${id}`)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
+        store: this.store,
+        spinner: this.spinner
+      })))
+  }
+
+  filter(searchFilterRequest: SearchFilterRequest) {
+    return this.httpClient
+      .post<PageableProducts>(`${this.config.api.services.integrator}${this.config.api.endpoints.filter}`, searchFilterRequest)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.spinner
