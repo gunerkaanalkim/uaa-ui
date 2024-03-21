@@ -26,6 +26,7 @@ export const environment = {
       deleteProduct: '/product/delete-by-product-id',
       getAllProducts: '/product/get-all',
       getProductImages: '/product/images',
+      filter: '/product/filter',
     }
   }
 };
