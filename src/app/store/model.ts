@@ -186,3 +186,18 @@ export interface SearchOperatorValue {
   operator: string,
   data: string
 }
+
+export interface SearchFilterRequest {
+  pageNo: number,
+  pageSize: number,
+  column: string,
+  order: string,
+  operator?: string,
+  filters: SearchFilter[]
+}
+
+export interface SearchFilter {
+  by: string,
+  operator: string,
+  value: string
+}
