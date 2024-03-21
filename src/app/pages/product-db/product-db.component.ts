@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product.service";
-import {Product, ProductImage, SearchOperator, SearchOperatorValue} from "../../store/model";
+import {Product, ProductImage, SearchFilter, SearchFilterRequest, SearchOperator} from "../../store/model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgxSpinnerService} from "ngx-spinner";
 import {FormControl, Validators} from "@angular/forms";
@@ -29,10 +29,6 @@ export class ProductDBComponent implements OnInit{
     {name: "Like", value: "like"},
   ]
 
-  titleOperator = new FormControl(null,
-    [Validators.required]
-  );
-
   title = new FormControl("",
     [Validators.minLength(5),
       Validators.maxLength(1000)]
@@ -47,6 +43,21 @@ export class ProductDBComponent implements OnInit{
     [Validators.minLength(5),
       Validators.maxLength(1000)]
   );
+
+  titleSearchFormControl = new FormControl("",
+    [Validators.minLength(1),
+      Validators.maxLength(1000)]
+  );
+
+  titleOperatorSearchFormControl = new FormControl(null);
+
+
+  priceSearchFormControl = new FormControl("",
+    [Validators.minLength(1),
+      Validators.maxLength(1000)]
+  );
+
+  priceOperatorSearchFormControl = new FormControl(null);
 
   constructor(
     private readonly productService: ProductService,
@@ -163,11 +174,48 @@ export class ProductDBComponent implements OnInit{
     }
   }
 
-  onTitleSearchFieldChange(searchOperatorValue : SearchOperatorValue) {
-    console.log(searchOperatorValue)
-  }
-
   onSearch() {
-    console.log(this.titleOperator.value)
+    const filters: SearchFilter[] = [];
+
+    if (this.titleSearchFormControl.value) {
+      filters.push({
+        by: "title",
+        value: this.titleSearchFormControl.value!,
+        operator: this.titleOperatorSearchFormControl.value!
+      });
+    }
+
+    if (this.priceSearchFormControl.value) {
+      filters.push({
+        by: "price",
+        value: this.priceSearchFormControl.value!,
+        operator: this.priceOperatorSearchFormControl.value!
+      });
+    }
+
+    const searchFilterRequest: SearchFilterRequest = {
+      pageNo: 1,
+      pageSize: 10,
+      column: 'id',
+      order: 'asc',
+      filters: filters
+    }
+
+    if (searchFilterRequest.filters.length) {
+      this.spinner.show();
+
+      this.productService.filter(searchFilterRequest)
+        .subscribe(pageableProducts => {
+          this.products = pageableProducts.content;
+          this.pageable = {
+            currentPage: pageableProducts.pageable.pageNumber,
+            lastPage: pageableProducts.totalPages,
+            perPage: pageableProducts.pageable.pageSize,
+            total: pageableProducts.totalElements
+          }
+
+          this.spinner.hide()
+        })
+    }
   }
 }
