@@ -19,16 +19,6 @@ export class ProductDBComponent implements OnInit{
   page: number = 1;
   generatedContent: String = "";
 
-  operators: SearchOperator[] = [
-    {name: "Equal", value: "equal"},
-    {name: "Not Equal", value: "notEqual"},
-    {name: "Greater Than", value: "greaterThan"},
-    {name: "Greater Than Or Equal", value: "greaterThanOrEqual"},
-    {name: "Less Than", value: "lessThan"},
-    {name: "Less Than Or Equal", value: "lessThanOrEqual"},
-    {name: "Like", value: "like"},
-  ]
-
   title = new FormControl("",
     [Validators.minLength(5),
       Validators.maxLength(1000)]
