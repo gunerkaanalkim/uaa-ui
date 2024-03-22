@@ -140,6 +140,32 @@ export interface PageableProducts {
   sort: PageableSort
 }
 
+export interface PageableShops {
+  content: Shop[],
+  first: boolean,
+  last: boolean
+  number : number,
+  numberOfElements: number,
+  size: 10,
+  totalElements: number,
+  totalPages: number,
+  pageable: Pageable
+  sort: PageableSort
+}
+
+export interface PageableProviders {
+  content: Provider[],
+  first: boolean,
+  last: boolean
+  number : number,
+  numberOfElements: number,
+  size: 10,
+  totalElements: number,
+  totalPages: number,
+  pageable: Pageable
+  sort: PageableSort
+}
+
 export interface Pageable {
   sort: PageableSort,
   offset: number,
