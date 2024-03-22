@@ -32,7 +32,7 @@ export class ListProviderComponent implements OnInit {
     this.spinner.show();
 
     this.providerService
-      .getAll()
+      .getAllWithoutPage()
       .subscribe(providers=>{
         this.providers = providers;
         this.spinner.hide();
