@@ -7,30 +7,35 @@ import {catchError} from "rxjs";
 import {Store} from "@ngrx/store";
 import {NgxSpinnerService} from "ngx-spinner";
 import {setHttpError} from "../store/project.action";
+import {AbstractCrudService, Upstream} from "./base/AbstractCrudService";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
-
-
+export class ProductService extends AbstractCrudService<Product, PageableProducts, SearchFilterRequest> {
   constructor(
-    @Inject(APP_CONFIG) private config: any,
-    private readonly httpClient: HttpClient,
-    private readonly globalExceptionHandlerService: GlobalExceptionHandlerService,
-    private readonly store: Store,
-    private spinner: NgxSpinnerService
+    @Inject(APP_CONFIG) protected override config: any,
+    protected override httpClient: HttpClient,
+    protected override globalExceptionHandlerService: GlobalExceptionHandlerService,
+    protected override store: Store,
+    protected override ngxSpinnerService: NgxSpinnerService
   ) {
+    super(config, httpClient, globalExceptionHandlerService, store, ngxSpinnerService);
     this.store.dispatch(setHttpError({httpError: null}))
   }
 
-  getAll(pageNo : number) {
-    return this.httpClient
-      .get<PageableProducts>(`${this.config.api.services.integrator}${this.config.api.endpoints.getAllProducts}?pageNo=${pageNo}`)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
+  getRoutes(): Upstream {
+    return {
+      getAll: `${this.config.api.services.integrator}${this.config.api.endpoints.product.getAll}`,
+      getAllWithoutPage: `${this.config.api.services.integrator}${this.config.api.endpoints.product.getAllWithoutPage}`,
+      getById: `${this.config.api.services.integrator}${this.config.api.endpoints.product.getById}`,
+      filter: `${this.config.api.services.integrator}${this.config.api.endpoints.product.filter}`,
+      create: `${this.config.api.services.integrator}${this.config.api.endpoints.product.create}`,
+      createAll: `${this.config.api.services.integrator}${this.config.api.endpoints.product.createAll}`,
+      edit: `${this.config.api.services.integrator}${this.config.api.endpoints.product.edit}`,
+      destroy: `${this.config.api.services.integrator}${this.config.api.endpoints.product.destroy}`,
+      destroyAll: `${this.config.api.services.integrator}${this.config.api.endpoints.product.destroyAll}`,
+    };
   }
 
   getProductImages(productId: number) {
@@ -38,52 +43,7 @@ export class ProductService {
       .get<ProductImage[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductImages}/${productId}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
-        spinner: this.spinner
-      })))
-  }
-
-  getById(id: number) {
-    return this.httpClient
-      .get<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProduct}/${id}`)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
-  }
-
-  create(product: Product) {
-    return this.httpClient
-      .post<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProduct}`, product)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
-  }
-
-  edit(product: Product) {
-    return this.httpClient
-      .put<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProduct}`,  product)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
-  }
-
-  destroy(id: number) {
-    return this.httpClient
-      .delete<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.deleteProduct}/${id}`)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
-  }
-
-  filter(searchFilterRequest: SearchFilterRequest) {
-    return this.httpClient
-      .post<PageableProducts>(`${this.config.api.services.integrator}${this.config.api.endpoints.filter}`, searchFilterRequest)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
+        spinner: this.ngxSpinnerService
       })))
   }
 }
