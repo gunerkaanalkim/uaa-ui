@@ -33,7 +33,7 @@ export class IntegrationService {
 
   getAllBrands(providerAlias: string) {
     return this.httpClient
-      .get<Brand[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getAllBrands}/${providerAlias}`)
+      .get<Brand[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.integration.getAllBrands}/${providerAlias}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.spinner
@@ -42,7 +42,7 @@ export class IntegrationService {
 
   getProductsByBrand(providerAlias: string, brandId: number, page: number) {
     return this.httpClient
-      .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductsByBrand}/${providerAlias}/${brandId}/${page}`)
+      .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.integration.getProductsByBrand}/${providerAlias}/${brandId}/${page}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.spinner
@@ -51,7 +51,7 @@ export class IntegrationService {
 
   getAllCategories(providerAlias: string) {
     return this.httpClient
-      .get<Category[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getAllCategories}/${providerAlias}`)
+      .get<Category[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.integration.getAllCategories}/${providerAlias}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.spinner
@@ -60,7 +60,7 @@ export class IntegrationService {
 
   getProductsByCategory(providerAlias: string, categoryId: number, page: number) {
     return this.httpClient
-      .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.getProductsByCategory}/${providerAlias}/${categoryId}/${page}`)
+      .get<ProductResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.integration.getProductsByCategory}/${providerAlias}/${categoryId}/${page}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.spinner
@@ -69,7 +69,7 @@ export class IntegrationService {
 
   addToProductDb(providerAlias: string, productId: number, shopId: number) {
     return this.httpClient
-      .post<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.addToProductDb}/${providerAlias}`, {
+      .post<Product>(`${this.config.api.services.integrator}${this.config.api.endpoints.integration.addToProductDb}/${providerAlias}`, {
         productId: productId,
         shopId: shopId
       })
@@ -81,7 +81,7 @@ export class IntegrationService {
 
   saveProductImages(productId: number, images: ProductImage[]) {
     return this.httpClient
-      .post<ProductImage[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.saveProductImages}`, {
+      .post<ProductImage[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.integration.saveProductImages}`, {
         productId: productId,
         images: images
       })
@@ -93,7 +93,7 @@ export class IntegrationService {
 
   saveProductVariants(productId: number, variants: ProductVariant[]) {
     return this.httpClient
-      .post<ProductVariant[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.saveProductVariants}`, {
+      .post<ProductVariant[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.integration.saveProductVariants}`, {
         productId: productId,
         variants: variants
       })
@@ -105,7 +105,7 @@ export class IntegrationService {
 
   saveProductVariantOptions(productId: number, providerAlias: string) {
     return this.httpClient
-      .post<ProductVariantOption[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.saveProductVariantOptions}`, {
+      .post<ProductVariantOption[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.integration.saveProductVariantOptions}`, {
         productId: productId,
         providerAlias: providerAlias
       })
@@ -117,7 +117,7 @@ export class IntegrationService {
 
   generateContent(generateContentRequest: GenerateContentRequest) {
     return this.httpClient
-      .post<GenerateContentResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.generateContent}`, {
+      .post<GenerateContentResponse>(`${this.config.api.services.integrator}${this.config.api.endpoints.integration.generateContent}`, {
         ...generateContentRequest
       })
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({

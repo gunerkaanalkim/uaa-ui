@@ -2,68 +2,41 @@ import {Inject, Injectable} from '@angular/core';
 import {APP_CONFIG} from "../config/tokens";
 import {HttpClient} from "@angular/common/http";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
-import {Provider} from "../store/model";
-import {catchError} from "rxjs";
+import {PageableProviders, Provider, SearchFilterRequest} from "../store/model";
+import {catchError, config} from "rxjs";
 import {Store} from "@ngrx/store";
 import {NgxSpinnerService} from "ngx-spinner";
 import {setHttpError} from "../store/project.action";
+import {AbstractCrudService, Upstream} from "./base/AbstractCrudService";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProviderService {
+export class ProviderService extends AbstractCrudService<Provider, PageableProviders, SearchFilterRequest>{
   constructor(
-    @Inject(APP_CONFIG) private config: any,
-    private readonly httpClient: HttpClient,
-    private readonly globalExceptionHandlerService: GlobalExceptionHandlerService,
-    private readonly store: Store,
-    private spinner: NgxSpinnerService
+    @Inject(APP_CONFIG) protected override config: any,
+    protected override httpClient: HttpClient,
+    protected override globalExceptionHandlerService: GlobalExceptionHandlerService,
+    protected override store: Store,
+    protected override ngxSpinnerService: NgxSpinnerService
   ) {
+    super(config, httpClient, globalExceptionHandlerService, store, ngxSpinnerService);
     this.store.dispatch(setHttpError({httpError: null}))
   }
 
-  getAll() {
-    return this.httpClient
-      .get<Provider[]>(`${this.config.api.services.integrator}${this.config.api.endpoints.getAllProviders}`)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
+  getRoutes(): Upstream {
+    return {
+      getAll: `${this.config.api.services.integrator}${this.config.api.endpoints.provider.getAll}`,
+      getAllWithoutPage: `${this.config.api.services.integrator}${this.config.api.endpoints.provider.getAllWithoutPage}`,
+      getById: `${this.config.api.services.integrator}${this.config.api.endpoints.provider.getById}`,
+      filter: `${this.config.api.services.integrator}${this.config.api.endpoints.provider.filter}`,
+      create: `${this.config.api.services.integrator}${this.config.api.endpoints.provider.create}`,
+      createAll: `${this.config.api.services.integrator}${this.config.api.endpoints.provider.createAll}`,
+      edit: `${this.config.api.services.integrator}${this.config.api.endpoints.provider.edit}`,
+      destroy: `${this.config.api.services.integrator}${this.config.api.endpoints.provider.destroy}`,
+      destroyAll: `${this.config.api.services.integrator}${this.config.api.endpoints.provider.destroyAll}`,
+    };
   }
 
-  getById(id: number) {
-    return this.httpClient
-      .get<Provider>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProvider}/${id}`)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
-  }
 
-  create(provider: Provider) {
-    return this.httpClient
-      .post<Provider>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProvider}`, provider)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
-  }
-
-  edit(provider: Provider) {
-    return this.httpClient
-      .put<Provider>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProvider}`, provider)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
-  }
-
-  destroy(id: number) {
-    return this.httpClient
-      .delete<Provider>(`${this.config.api.services.integrator}${this.config.api.endpoints.createProvider}/${id}`)
-      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
-        store: this.store,
-        spinner: this.spinner
-      })))
-  }
 }

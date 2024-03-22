@@ -9,9 +9,9 @@ import {FormControl, Validators} from "@angular/forms";
 })
 export class SearchFieldComponent {
   @Input() label : string = "";
-  @Output() onChange = new EventEmitter();
-  inputFormControl = new FormControl("");
-  selectFormControl = new FormControl(null,
+  @Input() type: string = "";
+  @Input() inputFormControl = new FormControl("");
+  @Input() selectFormControl = new FormControl(null,
     [Validators.required]
   );
 
@@ -24,11 +24,4 @@ export class SearchFieldComponent {
     {name: "Less Than Or Equal", value: "lessThanOrEqual"},
     {name: "Like", value: "like"},
   ]
-
-  _onChange() {
-    this.onChange.emit({
-      operator: this.selectFormControl.value,
-      data: this.inputFormControl.value
-    })
-  }
 }

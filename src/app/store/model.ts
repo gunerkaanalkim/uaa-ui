@@ -140,6 +140,32 @@ export interface PageableProducts {
   sort: PageableSort
 }
 
+export interface PageableShops {
+  content: Shop[],
+  first: boolean,
+  last: boolean
+  number : number,
+  numberOfElements: number,
+  size: 10,
+  totalElements: number,
+  totalPages: number,
+  pageable: Pageable
+  sort: PageableSort
+}
+
+export interface PageableProviders {
+  content: Provider[],
+  first: boolean,
+  last: boolean
+  number : number,
+  numberOfElements: number,
+  size: 10,
+  totalElements: number,
+  totalPages: number,
+  pageable: Pageable
+  sort: PageableSort
+}
+
 export interface Pageable {
   sort: PageableSort,
   offset: number,
@@ -185,4 +211,19 @@ export interface SearchOperator {
 export interface SearchOperatorValue {
   operator: string,
   data: string
+}
+
+export interface SearchFilterRequest {
+  pageNo: number,
+  pageSize: number,
+  column: string,
+  order: string,
+  operator?: string,
+  filters: SearchFilter[]
+}
+
+export interface SearchFilter {
+  by: string,
+  operator: string,
+  value: string
 }

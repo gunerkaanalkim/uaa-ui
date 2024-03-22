@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   getAllShops() {
     this.spinner.show();
     this.shopService
-      .getAll()
+      .getAllWithoutPage()
       .subscribe(shops => {
         this.store.dispatch(setAllShops({shops: shops}))
         this.shops = shops;

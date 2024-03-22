@@ -26,7 +26,7 @@ export class AuthenticationService {
 
   whoAmI() {
     return this.httpClient
-      .get<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.whoAmI}`)
+      .get<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.authenticate.whoAmI}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.spinner
@@ -36,7 +36,7 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
     return this.httpClient
-      .post<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.login}`, {
+      .post<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.authenticate.login}`, {
         username: username,
         password: password
       })
