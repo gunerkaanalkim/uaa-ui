@@ -21,6 +21,10 @@
               <li><a class="dropdown-item" href="#">Profile</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" [routerLink]="['/admin/user/list', {pageNo: 1}]">Management</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
             </ul>
           </li>

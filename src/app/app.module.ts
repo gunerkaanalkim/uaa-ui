@@ -28,6 +28,10 @@ import {CategoryDetailsComponent} from './pages/category-details/category-detail
 import {ProductDBComponent} from './pages/product-db/product-db.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { UserListingComponent } from './pages/user/user-listing/user-listing.component';
+import { UserEditComponent } from './pages/user/user-edit/user-edit.component';
+import { UserDeleteComponent } from './pages/user/user-delete/user-delete.component';
+import { UserCreateComponent } from './pages/user/user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BrandDetailComponent,
     CategoryDetailsComponent,
     ProductDBComponent,
+    UserListingComponent,
+    UserEditComponent,
+    UserDeleteComponent,
+    UserCreateComponent,
   ],
   imports: [
     BrowserModule,

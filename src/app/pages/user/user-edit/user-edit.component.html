@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <app-header></app-header>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="">
+      <div class="mb-3">
+        <label for="username" class="form-label"> Username </label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Username"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': usernameHasError() }"
+          [formControl]="username"
+        />
+        <div id="usernameValidation" class="invalid-feedback">
+          Please enter a valid username.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label"> Name </label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="User name"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': nameHasError() }"
+          [formControl]="name"
+        />
+        <div id="nameValidation" class="invalid-feedback">
+          Please enter a valid name.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="surname" class="form-label">Surname </label>
+        <input
+          type="text"
+          class="form-control"
+          id="surname"
+          placeholder="Surname"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': surnameHasError() }"
+          [formControl]="surname"
+        />
+        <div id="surnameValidation" class="invalid-feedback">
+          Please enter a valid surname
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email </label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': emailHasError() }"
+          [formControl]="email"
+        />
+        <div id="emailValidation" class="invalid-feedback">
+          Please enter a valid email
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" (click)="onEdit()" [disabled]="formHasError()">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
