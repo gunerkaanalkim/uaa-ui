@@ -11,6 +11,9 @@ import {ProviderDetailComponent} from "./pages/provider/provider-detail/provider
 import {BrandDetailComponent} from "./pages/brand-detail/brand-detail.component";
 import {CategoryDetailsComponent} from "./pages/category-details/category-details.component";
 import {ProductDBComponent} from "./pages/product-db/product-db.component";
+import {UserListingComponent} from "./pages/user/user-listing/user-listing.component";
+import {UserEditComponent} from "./pages/user/user-edit/user-edit.component";
+import {UserCreateComponent} from "./pages/user/user-create/user-create.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'splash', pathMatch: 'full'},
@@ -24,6 +27,10 @@ const routes: Routes = [
   {path: 'brand/detail', component: BrandDetailComponent},
   {path: 'category/detail', component: CategoryDetailsComponent},
   {path: 'product-database', component: ProductDBComponent},
+  {path: 'admin/user/list', component: UserListingComponent},
+  {path: 'admin/user/edit', component: UserEditComponent},
+  {path: 'admin/user/create', component: UserCreateComponent},
+  // {path: 'integration/etsy', component: ProductDBComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent}
 ];
