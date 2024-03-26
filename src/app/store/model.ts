@@ -227,3 +227,65 @@ export interface SearchFilter {
   operator: string,
   value: string
 }
+
+export interface User {
+  id: number
+  name: string,
+  surname: string,
+  username: string
+  email: string
+  password?: string
+}
+
+export interface PageableUsers {
+  content: User[],
+  first: boolean,
+  last: boolean
+  number: number,
+  numberOfElements: number,
+  size: 10,
+  totalElements: number,
+  totalPages: number,
+  pageable: Pageable
+  sort: PageableSort
+}
+
+export interface Permission {
+  id: number
+  controller: string,
+  title: string,
+  description: string
+  url: string
+}
+
+export interface PageablePermissions {
+  content: Permission[],
+  first: boolean,
+  last: boolean
+  number: number,
+  numberOfElements: number,
+  size: 10,
+  totalElements: number,
+  totalPages: number,
+  pageable: Pageable
+  sort: PageableSort
+}
+
+export interface Role {
+  id: number
+  name: string,
+  code: string,
+}
+
+export interface PageableRoles {
+  content: Role[],
+  first: boolean,
+  last: boolean
+  number: number,
+  numberOfElements: number,
+  size: 10,
+  totalElements: number,
+  totalPages: number,
+  pageable: Pageable
+  sort: PageableSort
+}
