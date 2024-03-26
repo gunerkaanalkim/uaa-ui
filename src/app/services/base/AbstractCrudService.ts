@@ -33,7 +33,7 @@ export abstract class AbstractCrudService<D, P, S> {
 
   public getAll(pageNo: number) {
     return this.httpClient
-      .get<P>(`${this.getRoutes().getAll}?pageNo${pageNo}`)
+      .get<P>(`${this.getRoutes().getAll}?pageNo=${pageNo}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.ngxSpinnerService
