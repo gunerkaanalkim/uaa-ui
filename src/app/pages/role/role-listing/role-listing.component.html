@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-lg-4">
+      <app-management-menu [activeElement]="'role'"></app-management-menu>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <button class="btn btn-outline-primary btn-sm float-end"
+                  [routerLink]="['/admin/role/create']">New Role</button>
+          System Roles
+        </div>
+        <div class="card-body" style="min-height: 500px">
+          <div class="table-responsive" style="min-height: 500px">
+            <table class="table table-hover table-bordered">
+              <thead>
+              <tr>
+                <th>Id</th>
+                <th>Role Name</th>
+                <th>Role Description</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let role of roles">
+                <td>{{role.id}}</td>
+                <td>{{role.name}}</td>
+                <td>{{role.code}}</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                      Actions
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item"
+                           [routerLink]="['/admin/role/edit', {userId: role.id}]">
+                          Edit
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item"
+                           data-bs-toggle="modal"
+                           data-bs-target="#deleteUserModal"
+                           (click)="onDelete(role.id)"
+                        >
+                          Delete
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <app-pager *ngIf="roles.length"
+                     [currentPage]="pageable.currentPage"
+                     [lastPage]="pageable.lastPage"
+                     [perPage]="pageable.perPage"
+                     [total]="pageable.total"
+                     (onSelect)="onPageSelect($event)"
+          ></app-pager>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-role-delete [selectedRoleId]="selectedRoleId"></app-role-delete>
