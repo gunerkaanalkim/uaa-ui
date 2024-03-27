@@ -26,15 +26,15 @@ export class RoleService extends AbstractCrudService<Role, PageableRoles, Search
 
   getRoutes(): Upstream {
     return {
-      getAll: `${this.config.api.services.integrator}${this.config.api.endpoints.role.getAll}`,
-      getAllWithoutPage: `${this.config.api.services.integrator}${this.config.api.endpoints.role.getAllWithoutPage}`,
-      getById: `${this.config.api.services.integrator}${this.config.api.endpoints.role.getById}`,
-      filter: `${this.config.api.services.integrator}${this.config.api.endpoints.role.filter}`,
-      create: `${this.config.api.services.integrator}${this.config.api.endpoints.role.create}`,
-      createAll: `${this.config.api.services.integrator}${this.config.api.endpoints.role.createAll}`,
-      edit: `${this.config.api.services.integrator}${this.config.api.endpoints.role.edit}`,
-      destroy: `${this.config.api.services.integrator}${this.config.api.endpoints.role.destroy}`,
-      destroyAll: `${this.config.api.services.integrator}${this.config.api.endpoints.role.destroyAll}`,
+      getAll: `${this.config.api.services.auth}${this.config.api.endpoints.role.getAll}`,
+      getAllWithoutPage: `${this.config.api.services.auth}${this.config.api.endpoints.role.getAllWithoutPage}`,
+      getById: `${this.config.api.services.auth}${this.config.api.endpoints.role.getById}`,
+      filter: `${this.config.api.services.auth}${this.config.api.endpoints.role.filter}`,
+      create: `${this.config.api.services.auth}${this.config.api.endpoints.role.create}`,
+      createAll: `${this.config.api.services.auth}${this.config.api.endpoints.role.createAll}`,
+      edit: `${this.config.api.services.auth}${this.config.api.endpoints.role.edit}`,
+      destroy: `${this.config.api.services.auth}${this.config.api.endpoints.role.destroy}`,
+      destroyAll: `${this.config.api.services.auth}${this.config.api.endpoints.role.destroyAll}`,
     };
   }
 }
