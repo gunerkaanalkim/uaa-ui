@@ -1,0 +1,14 @@
+<ul class="list-group">
+  <li class="list-group-item" [ngClass]="{active: activeElement === 'user'}" aria-current="true">
+    <a [routerLink]="['/admin/user/list', {pageNo: 1}]">User</a>
+  </li>
+  <li class="list-group-item" [ngClass]="{active: activeElement === 'role'}">
+    <a [routerLink]="['/admin/role/list', {pageNo: 1}]">Role</a>
+  </li>
+  <li class="list-group-item" [ngClass]="{active: activeElement === 'permission'}">
+    <a [routerLink]="['/admin/permission/list', {pageNo: 1}]">Permission</a>
+  </li>
+  <li class="list-group-item" [ngClass]="{active: activeElement === 'authorization'}">
+    <a [routerLink]="['/admin/authorization/list', {pageNo: 1}]">Authorization</a>
+  </li>
+</ul>
