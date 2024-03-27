@@ -10,6 +10,7 @@ import {CategoryComponent} from './category/category.component';
 import {RouterLink} from "@angular/router";
 import { SearchFieldComponent } from './search-field/search-field.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ManagementMenuComponent } from './management-menu/management-menu.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     CategoryComponent,
     SearchFieldComponent,
     SearchFieldComponent,
+    ManagementMenuComponent,
   ],
   exports: [
     HeaderComponent,
@@ -34,6 +36,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     CategoryComponent,
     SearchFieldComponent,
     SearchFieldComponent,
+    ManagementMenuComponent,
   ],
   imports: [
     CommonModule,
