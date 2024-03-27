@@ -1,71 +1,79 @@
 <div class="container-fluid">
   <app-header></app-header>
-  <div class="card">
-    <div class="card-header">
-      <button class="btn btn-outline-primary btn-sm float-end"
-              [routerLink]="['/admin/user/create']">New User</button>
-      System Users
+  <div class="row">
+    <div class="col-lg-4">
+      <app-management-menu [activeElement]="'user'"></app-management-menu>
     </div>
-    <div class="card-body" style="min-height: 500px">
-      <div class="table-responsive" style="min-height: 500px">
-        <table class="table table-hover table-bordered">
-          <thead>
-          <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{user.id}}</td>
-            <td>{{user.username}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.surname}}</td>
-            <td>
-              <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                  Actions
-                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item"
-                       [routerLink]="['/admin/user/edit', {userId: user.id}]">
-                      Edit
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item"
-                       data-bs-toggle="modal"
-                       data-bs-target="#deleteUserModal"
-                       (click)="onDelete(user.id)"
-                    >
-                      Delete
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <button class="btn btn-outline-primary btn-sm float-end"
+                  [routerLink]="['/admin/user/create']">New User</button>
+          System Users
+        </div>
+        <div class="card-body" style="min-height: 500px">
+          <div class="table-responsive" style="min-height: 500px">
+            <table class="table table-hover table-bordered">
+              <thead>
+              <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.surname}}</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                      Actions
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item"
+                           [routerLink]="['/admin/user/edit', {userId: user.id}]">
+                          Edit
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item"
+                           data-bs-toggle="modal"
+                           data-bs-target="#deleteUserModal"
+                           (click)="onDelete(user.id)"
+                        >
+                          Delete
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <app-pager *ngIf="users.length"
+                     [currentPage]="pageable.currentPage"
+                     [lastPage]="pageable.lastPage"
+                     [perPage]="pageable.perPage"
+                     [total]="pageable.total"
+                     (onSelect)="onPageSelect($event)"
+          ></app-pager>
+        </div>
       </div>
     </div>
-
-    <div class="card-footer">
-      <app-pager *ngIf="users.length"
-                 [currentPage]="pageable.currentPage"
-                 [lastPage]="pageable.lastPage"
-                 [perPage]="pageable.perPage"
-                 [total]="pageable.total"
-                 (onSelect)="onPageSelect($event)"
-      ></app-pager>
-    </div>
   </div>
+
 </div>
 <app-user-delete [selectedUserId]="selectedUserId"></app-user-delete>
