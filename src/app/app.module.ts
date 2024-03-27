@@ -32,6 +32,10 @@ import { UserListingComponent } from './pages/user/user-listing/user-listing.com
 import { UserEditComponent } from './pages/user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './pages/user/user-delete/user-delete.component';
 import { UserCreateComponent } from './pages/user/user-create/user-create.component';
+import { RoleCreateComponent } from './pages/role/role-create/role-create.component';
+import { RoleListingComponent } from './pages/role/role-listing/role-listing.component';
+import { RoleEditComponent } from './pages/role/role-edit/role-edit.component';
+import { RoleDeleteComponent } from './pages/role/role-delete/role-delete.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,10 @@ import { UserCreateComponent } from './pages/user/user-create/user-create.compon
     UserEditComponent,
     UserDeleteComponent,
     UserCreateComponent,
+    RoleCreateComponent,
+    RoleListingComponent,
+    RoleEditComponent,
+    RoleDeleteComponent,
   ],
   imports: [
     BrowserModule,
