@@ -36,6 +36,10 @@ import { RoleCreateComponent } from './pages/role/role-create/role-create.compon
 import { RoleListingComponent } from './pages/role/role-listing/role-listing.component';
 import { RoleEditComponent } from './pages/role/role-edit/role-edit.component';
 import { RoleDeleteComponent } from './pages/role/role-delete/role-delete.component';
+import { PermissionCreateComponent } from './pages/permission/permission-create/permission-create.component';
+import { PermissionEditingComponent } from './pages/permission/permission-editing/permission-editing.component';
+import { PermissionDeleteComponent } from './pages/permission/permission-delete/permission-delete.component';
+import { PermissionListComponent } from './pages/permission/permission-list/permission-list.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +65,10 @@ import { RoleDeleteComponent } from './pages/role/role-delete/role-delete.compon
     RoleListingComponent,
     RoleEditComponent,
     RoleDeleteComponent,
+    PermissionCreateComponent,
+    PermissionEditingComponent,
+    PermissionDeleteComponent,
+    PermissionListComponent,
   ],
   imports: [
     BrowserModule,
