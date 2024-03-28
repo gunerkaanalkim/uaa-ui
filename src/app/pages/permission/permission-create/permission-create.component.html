@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <app-header></app-header>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="">
+      <div class="mb-3">
+        <label for="title" class="form-label"> Title </label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Permission Name"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': permissionNameHasError() }"
+          [formControl]="permissionName"
+        />
+        <div id="permissionNameValidation" class="invalid-feedback">
+          Please enter a valid permission name.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="permissionDescription" class="form-label"> Permission Description </label>
+        <input
+          type="text"
+          class="form-control"
+          id="permissionDescription"
+          placeholder="Permission Description"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': permissionDescriptionHasError() }"
+          [formControl]="permissionDescription"
+        />
+        <div id="permissionDescriptionValidation" class="invalid-feedback">
+          Please enter a valid permission description.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="permissionURL" class="form-label"> Permission URL </label>
+        <input
+          type="text"
+          class="form-control"
+          id="permissionURL"
+          placeholder="Permission URL"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': permissionURLHasError() }"
+          [formControl]="permissionURL"
+        />
+        <div id="permissionURLValidation" class="invalid-feedback">
+          Please enter a valid permission URL.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="permissionController" class="form-label"> Permission Controller </label>
+        <input
+          type="text"
+          class="form-control"
+          id="permissionController"
+          placeholder="Permission Controller"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': permissionControllerHasError() }"
+          [formControl]="permissionController"
+        />
+        <div id="permissionControllerValidation" class="invalid-feedback">
+          Please enter a valid permission controller.
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" (click)="onEdit()" [disabled]="formHasError()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
