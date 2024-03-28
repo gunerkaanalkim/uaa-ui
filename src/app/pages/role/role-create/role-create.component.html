@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <app-header></app-header>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="">
+      <div class="mb-3">
+        <label for="rolename" class="form-label"> Role Name </label>
+        <input
+          type="text"
+          class="form-control"
+          id="rolename"
+          placeholder="Role Name"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': roleNameHasError() }"
+          [formControl]="roleName"
+        />
+        <div id="rolenameValidation" class="invalid-feedback">
+          Please enter a valid role name.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="roleCode" class="form-label"> Role Code </label>
+        <input
+          type="text"
+          class="form-control"
+          id="roleCode"
+          placeholder="Role Code"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': roleCodeHasError() }"
+          [formControl]="roleCode"
+        />
+        <div id="roleCodeValidation" class="invalid-feedback">
+          Please enter a valid role code.
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" (click)="onEdit()" [disabled]="formHasError()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

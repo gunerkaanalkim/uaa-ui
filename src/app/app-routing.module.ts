@@ -14,6 +14,12 @@ import {ProductDBComponent} from "./pages/product-db/product-db.component";
 import {UserListingComponent} from "./pages/user/user-listing/user-listing.component";
 import {UserEditComponent} from "./pages/user/user-edit/user-edit.component";
 import {UserCreateComponent} from "./pages/user/user-create/user-create.component";
+import {RoleCreateComponent} from "./pages/role/role-create/role-create.component";
+import {RoleListingComponent} from "./pages/role/role-listing/role-listing.component";
+import {RoleEditComponent} from "./pages/role/role-edit/role-edit.component";
+import {PermissionListComponent} from "./pages/permission/permission-list/permission-list.component";
+import {PermissionEditingComponent} from "./pages/permission/permission-editing/permission-editing.component";
+import {PermissionCreateComponent} from "./pages/permission/permission-create/permission-create.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'splash', pathMatch: 'full'},
@@ -30,6 +36,12 @@ const routes: Routes = [
   {path: 'admin/user/list', component: UserListingComponent},
   {path: 'admin/user/edit', component: UserEditComponent},
   {path: 'admin/user/create', component: UserCreateComponent},
+  {path: 'admin/role/list', component: RoleListingComponent},
+  {path: 'admin/role/edit', component: RoleEditComponent},
+  {path: 'admin/role/create', component: RoleCreateComponent},
+  {path: 'admin/permission/list', component: PermissionListComponent},
+  {path: 'admin/permission/edit', component: PermissionEditingComponent},
+  {path: 'admin/permission/create', component: PermissionCreateComponent},
   // {path: 'integration/etsy', component: ProductDBComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent}

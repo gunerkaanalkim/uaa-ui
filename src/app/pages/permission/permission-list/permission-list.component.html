@@ -2,14 +2,14 @@
   <app-header></app-header>
   <div class="row">
     <div class="col-lg-2">
-      <app-management-menu [activeElement]="'user'"></app-management-menu>
+      <app-management-menu [activeElement]="'permission'"></app-management-menu>
     </div>
     <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <button class="btn btn-outline-primary btn-sm float-end"
-                  [routerLink]="['/admin/user/create']">New User</button>
-          System Users
+                  [routerLink]="['/admin/permission/create']">New Permission</button>
+          System Roles
         </div>
         <div class="card-body" style="min-height: 500px">
           <div class="table-responsive" style="min-height: 500px">
@@ -17,18 +17,20 @@
               <thead>
               <tr>
                 <th>Id</th>
-                <th>Username</th>
-                <th>Name</th>
-                <th>Surname</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>URL</th>
+                <th>Controller</th>
                 <th></th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let user of users">
-                <td>{{user.id}}</td>
-                <td>{{user.username}}</td>
-                <td>{{user.name}}</td>
-                <td>{{user.surname}}</td>
+              <tr *ngFor="let permission of permissions">
+                <td>{{permission.id}}</td>
+                <td>{{permission.title}}</td>
+                <td>{{permission.description}}</td>
+                <td>{{permission.url}}</td>
+                <td>{{permission.controller}}</td>
                 <td>
                   <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle"
@@ -40,7 +42,7 @@
                     <ul class="dropdown-menu">
                       <li>
                         <a class="dropdown-item"
-                           [routerLink]="['/admin/user/edit', {userId: user.id}]">
+                           [routerLink]="['/admin/permission/edit', {permissionId: permission.id}]">
                           Edit
                         </a>
                       </li>
@@ -48,7 +50,7 @@
                         <a class="dropdown-item"
                            data-bs-toggle="modal"
                            data-bs-target="#deleteUserModal"
-                           (click)="onDelete(user.id)"
+                           (click)="onDelete(permission.id)"
                         >
                           Delete
                         </a>
@@ -63,7 +65,7 @@
         </div>
 
         <div class="card-footer">
-          <app-pager *ngIf="users.length"
+          <app-pager *ngIf="permissions.length"
                      [currentPage]="pageable.currentPage"
                      [lastPage]="pageable.lastPage"
                      [perPage]="pageable.perPage"
@@ -76,4 +78,4 @@
   </div>
 
 </div>
-<app-user-delete [selectedUserId]="selectedUserId"></app-user-delete>
+<app-permission-delete [selectedPermissionId]="selectedPermissionId"></app-permission-delete>

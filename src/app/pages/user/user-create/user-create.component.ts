@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
+import * as bcrypt from 'bcryptjs'
 
 @Component({
   selector: 'app-user-create',
@@ -12,20 +13,26 @@ export class UserCreateComponent {
   username = new FormControl('',
     [Validators.minLength(5), Validators.maxLength(200)]
   );
+
   name = new FormControl('',
     [Validators.minLength(5), Validators.maxLength(200)]
   );
+
   surname = new FormControl('',
     [Validators.minLength(5), Validators.maxLength(200)]
   );
+
   email = new FormControl('',
+    [Validators.minLength(5), Validators.maxLength(200)]
+  );
+
+  password = new FormControl('',
     [Validators.minLength(5), Validators.maxLength(200)]
   );
 
   userId!: number;
 
   constructor(
-    private readonly activatedRoute: ActivatedRoute,
     private readonly userService: UserService,
     private readonly router: Router
   ) {
@@ -33,12 +40,16 @@ export class UserCreateComponent {
 
   onEdit() {
     if (!this.formHasError()) {
+      const passwordHash = bcrypt
+        .hashSync(this.password.value!, bcrypt.genSaltSync(10));
+
       this.userService
         .create({
           username: this.username.value!,
           name: this.name.value!,
           email: this.email.value!,
           surname: this.surname.value!,
+          password: passwordHash,
           id: this.userId
         })
         .subscribe(shop => {
@@ -64,6 +75,10 @@ export class UserCreateComponent {
 
   emailHasError() {
     return this.email.invalid && (this.email.dirty || this.email.touched)
+  }
+
+  passwordHasError() {
+    return this.password.invalid && (this.password.dirty || this.password.touched)
   }
 
   formHasError() {

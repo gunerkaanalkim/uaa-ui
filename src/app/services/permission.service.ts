@@ -26,15 +26,15 @@ export class PermissionService extends AbstractCrudService<Permission, PageableP
 
   getRoutes(): Upstream {
     return {
-      getAll: `${this.config.api.services.integrator}${this.config.api.endpoints.permission.getAll}`,
-      getAllWithoutPage: `${this.config.api.services.integrator}${this.config.api.endpoints.permission.getAllWithoutPage}`,
-      getById: `${this.config.api.services.integrator}${this.config.api.endpoints.permission.getById}`,
-      filter: `${this.config.api.services.integrator}${this.config.api.endpoints.permission.filter}`,
-      create: `${this.config.api.services.integrator}${this.config.api.endpoints.permission.create}`,
-      createAll: `${this.config.api.services.integrator}${this.config.api.endpoints.permission.createAll}`,
-      edit: `${this.config.api.services.integrator}${this.config.api.endpoints.permission.edit}`,
-      destroy: `${this.config.api.services.integrator}${this.config.api.endpoints.permission.destroy}`,
-      destroyAll: `${this.config.api.services.integrator}${this.config.api.endpoints.permission.destroyAll}`,
+      getAll: `${this.config.api.services.auth}${this.config.api.endpoints.permission.getAll}`,
+      getAllWithoutPage: `${this.config.api.services.auth}${this.config.api.endpoints.permission.getAllWithoutPage}`,
+      getById: `${this.config.api.services.auth}${this.config.api.endpoints.permission.getById}`,
+      filter: `${this.config.api.services.auth}${this.config.api.endpoints.permission.filter}`,
+      create: `${this.config.api.services.auth}${this.config.api.endpoints.permission.create}`,
+      createAll: `${this.config.api.services.auth}${this.config.api.endpoints.permission.createAll}`,
+      edit: `${this.config.api.services.auth}${this.config.api.endpoints.permission.edit}`,
+      destroy: `${this.config.api.services.auth}${this.config.api.endpoints.permission.destroy}`,
+      destroyAll: `${this.config.api.services.auth}${this.config.api.endpoints.permission.destroyAll}`,
     };
   }
 }

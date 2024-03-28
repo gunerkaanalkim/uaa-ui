@@ -14,6 +14,7 @@ import {selectHttpError, selectUserDetails} from "../../store/project.selector";
 export class HeaderComponent implements OnInit {
   userDetails!: UserDetails;
   httpError: HttpError | null = null;
+  theme: string = '';
 
   constructor(
     private readonly store: Store,
@@ -26,6 +27,20 @@ export class HeaderComponent implements OnInit {
     this.whoAmI();
     this.selectUserDetails();
     this.selectHttpError();
+
+    let savedTheme = localStorage.getItem('theme')!;
+
+    if(!savedTheme) {
+      savedTheme = 'light';
+    }
+
+    this.theme = savedTheme;
+
+    if ('dark' === savedTheme) {
+      this.setDarkTheme();
+    } else {
+      this.setLightTheme();
+    }
   }
 
   whoAmI() {
@@ -51,5 +66,19 @@ export class HeaderComponent implements OnInit {
       .subscribe(httpError=>{
         this.httpError = httpError;
       })
+  }
+
+  setDarkTheme() {
+    //@ts-ignore
+    document.querySelector("html").setAttribute("data-bs-theme", "dark");
+    localStorage.setItem('theme', "dark");
+    this.theme = 'dark';
+  }
+
+  setLightTheme() {
+    //@ts-ignore
+    document.querySelector("html").setAttribute("data-bs-theme", "light")
+    localStorage.setItem('theme', "light");
+    this.theme = 'light';
   }
 }
