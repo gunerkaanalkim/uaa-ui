@@ -1,14 +1,18 @@
 <ul class="list-group">
-  <li class="list-group-item" [ngClass]="{active: activeElement === 'user'}" aria-current="true">
-    <a [routerLink]="['/admin/user/list', {pageNo: 1}]">User</a>
+  <li [routerLink]="['/admin/user/list', {pageNo: 1}]" class="list-group-item"
+      [ngClass]="{active: activeElement === 'user'}" aria-current="true">
+    <a><i class="bi bi-people"></i> User</a>
   </li>
-  <li class="list-group-item" [ngClass]="{active: activeElement === 'role'}">
-    <a [routerLink]="['/admin/role/list', {pageNo: 1}]">Role</a>
+  <li [routerLink]="['/admin/role/list', {pageNo: 1}]" class="list-group-item"
+      [ngClass]="{active: activeElement === 'role'}">
+    <a><i class="bi bi-shield-shaded"></i> Role</a>
   </li>
-  <li class="list-group-item" [ngClass]="{active: activeElement === 'permission'}">
-    <a [routerLink]="['/admin/permission/list', {pageNo: 1}]">Permission</a>
+  <li [routerLink]="['/admin/permission/list', {pageNo: 1}]" class="list-group-item"
+      [ngClass]="{active: activeElement === 'permission'}">
+    <a><i class="bi bi-sign-turn-left"></i> Permission</a>
   </li>
-  <li class="list-group-item" [ngClass]="{active: activeElement === 'authorization'}">
-    <a [routerLink]="['/admin/authorization/list', {pageNo: 1}]">Authorization</a>
+  <li [routerLink]="['/admin/authorization/list', {pageNo: 1}]" class="list-group-item"
+      [ngClass]="{active: activeElement === 'authorization'}">
+    <a><i class="bi bi-shield-lock-fill"></i> Authorization</a>
   </li>
 </ul>
