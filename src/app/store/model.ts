@@ -255,7 +255,8 @@ export interface Permission {
   controller: string,
   title: string,
   description: string
-  url: string
+  url: string,
+  isAssigned?: boolean
 }
 
 export interface PageablePermissions {
@@ -288,4 +289,14 @@ export interface PageableRoles {
   totalPages: number,
   pageable: Pageable
   sort: PageableSort
+}
+
+export interface AssignPermissionToRoleRequest {
+  permissionId: number,
+  roleId: number
+}
+
+export interface RolePermission {
+  role: Role,
+  permission: Permission
 }
