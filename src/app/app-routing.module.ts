@@ -20,6 +20,7 @@ import {RoleEditComponent} from "./pages/role/role-edit/role-edit.component";
 import {PermissionListComponent} from "./pages/permission/permission-list/permission-list.component";
 import {PermissionEditingComponent} from "./pages/permission/permission-editing/permission-editing.component";
 import {PermissionCreateComponent} from "./pages/permission/permission-create/permission-create.component";
+import {AuthorizationListComponent} from "./pages/authorization/authorization-list/authorization-list.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'splash', pathMatch: 'full'},
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path: 'admin/permission/list', component: PermissionListComponent},
   {path: 'admin/permission/edit', component: PermissionEditingComponent},
   {path: 'admin/permission/create', component: PermissionCreateComponent},
+  {path: 'admin/authorization/list', component: AuthorizationListComponent},
   // {path: 'integration/etsy', component: ProductDBComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent}
