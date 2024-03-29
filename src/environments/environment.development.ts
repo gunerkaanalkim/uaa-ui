@@ -63,6 +63,9 @@ export const environment = {
         edit: '/role',
         destroy: '/role',
         destroyAll: '/role/delete-all',
+        getAssignedPermissionsOfRole: '/role/get-assigned-permissions',
+        assignPermission: '/role/assign-permission',
+        revokePermission: '/role/revoke-permission'
       },
       provider: {
         getAll: "/provider/get-all",
