@@ -40,6 +40,7 @@ import { PermissionCreateComponent } from './pages/permission/permission-create/
 import { PermissionEditingComponent } from './pages/permission/permission-editing/permission-editing.component';
 import { PermissionDeleteComponent } from './pages/permission/permission-delete/permission-delete.component';
 import { PermissionListComponent } from './pages/permission/permission-list/permission-list.component';
+import { AuthorizationListComponent } from './pages/authorization/authorization-list/authorization-list.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { PermissionListComponent } from './pages/permission/permission-list/perm
     PermissionEditingComponent,
     PermissionDeleteComponent,
     PermissionListComponent,
+    AuthorizationListComponent,
   ],
   imports: [
     BrowserModule,
