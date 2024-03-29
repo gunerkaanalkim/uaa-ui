@@ -9,7 +9,7 @@
         <div class="card-header">
           <button class="btn btn-outline-primary btn-sm float-end"
                   [routerLink]="['/admin/permission/create']">New Permission</button>
-          System Roles
+          Permission List
         </div>
         <div class="card-body" style="min-height: 500px">
           <div class="table-responsive" style="min-height: 500px">
@@ -19,8 +19,8 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>URL</th>
                 <th>Controller</th>
+                <th>URL</th>
                 <th></th>
               </tr>
               </thead>
@@ -29,11 +29,11 @@
                 <td>{{permission.id}}</td>
                 <td>{{permission.title}}</td>
                 <td>{{permission.description}}</td>
-                <td>{{permission.url}}</td>
                 <td>{{permission.controller}}</td>
+                <td>{{permission.url}}</td>
                 <td>
                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle"
+                    <button class="btn btn-sm btn-primary dropdown-toggle"
                             type="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false">
