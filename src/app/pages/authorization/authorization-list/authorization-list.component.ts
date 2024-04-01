@@ -4,6 +4,8 @@ import {Permission, Role} from "../../../store/model";
 import {AuthorizationService} from "../../../services/authorization.service";
 import {PermissionService} from "../../../services/permission.service";
 import {NgxSpinnerService} from "ngx-spinner";
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-authorization-list',
@@ -14,6 +16,7 @@ export class AuthorizationListComponent implements OnInit {
 
   roles: Role[] = [];
   permissions: Permission[] = [];
+  groupedPermissions: any;
   selectedRole: Role | null = null;
 
   constructor(
@@ -42,6 +45,7 @@ export class AuthorizationListComponent implements OnInit {
       .getAllWithoutPage()
       .subscribe(permissions => {
         this.permissions = permissions;
+        this.filterPermissions(permissions);
         this.spinner.hide()
       })
   }
@@ -83,11 +87,59 @@ export class AuthorizationListComponent implements OnInit {
       this.authorizationService.revokePermissionToRole(permission, this.selectedRole!)
         .subscribe(response => {
           this.spinner.hide()
-
         })
     }
-
   }
 
+  assignAllPermissions(event: Event) {
+    const target = (event.target as HTMLInputElement)!;
+    if (target.checked) {
+      this.spinner.show()
 
+      const unassignedPermissions = this.permissions
+        .filter(permission => !permission.isAssigned)
+        .map(permission => permission.id);
+
+      this.authorizationService
+        .assignAllPermissionToRole(unassignedPermissions, this.selectedRole!.id)
+        .subscribe(response => {
+          this.permissions.forEach(permission => {
+            permission.isAssigned = true
+          });
+          this.spinner.hide()
+
+        })
+    } else {
+      this.spinner.show()
+
+      const allPermissions = this.permissions.map(permission => permission.id);
+
+      this.authorizationService
+        .revokeAllPermissionToRole(allPermissions, this.selectedRole!.id)
+        .subscribe(response => {
+          this.permissions.forEach(permission => {
+            permission.isAssigned = false;
+          });
+          this.spinner.hide()
+        })
+    }
+  }
+
+  isAllPermissionAssigned() {
+    const assignedPermissionsLength = this.permissions
+      .filter(permission => permission.isAssigned).length;
+    const allPermissionsLength = this.permissions.length;
+
+    return assignedPermissionsLength === allPermissionsLength;
+  }
+
+  filterPermissions(permissions: Permission[]) {
+    this.groupedPermissions = _.groupBy(permissions, 'controller');
+    console.log(this.groupedPermissions)
+  }
+
+  getGroupedPermissions(permissions: any) : Permission[] {
+    console.log(permissions)
+    return permissions;
+  }
 }

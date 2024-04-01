@@ -10,19 +10,19 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class PermissionEditingComponent {
   permissionName = new FormControl('',
-    [Validators.minLength(5), Validators.maxLength(200)]
+    [Validators.minLength(1), Validators.maxLength(200)]
   );
 
   permissionDescription = new FormControl('',
-    [Validators.minLength(5), Validators.maxLength(200)]
+    [Validators.minLength(1), Validators.maxLength(200)]
   );
 
   permissionURL = new FormControl('',
-    [Validators.minLength(5), Validators.maxLength(200)]
+    [Validators.minLength(1), Validators.maxLength(200)]
   );
 
   permissionController = new FormControl('',
-    [Validators.minLength(5), Validators.maxLength(200)]
+    [Validators.minLength(1), Validators.maxLength(200)]
   );
 
   permissionId!: number;
