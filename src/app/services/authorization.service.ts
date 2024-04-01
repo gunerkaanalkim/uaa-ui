@@ -43,6 +43,21 @@ export class AuthorizationService {
         spinner: this.ngxSpinnerService
       })))
   }
+
+  assignAllPermissionToRole(permissionIds: number[], roleId: number) {
+    const request: any = {
+      roleId: roleId,
+      permissionIds: permissionIds
+    }
+
+    return this.httpClient
+      .post<RolePermission[]>(`${this.config.api.services.auth}${this.config.api.endpoints.role.assignAllPermission}`, request)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
+        store: this.store,
+        spinner: this.ngxSpinnerService
+      })))
+  }
+
   revokePermissionToRole(permission: Permission, role: Role) {
     const request: AssignPermissionToRoleRequest = {
       roleId: role.id,
@@ -51,6 +66,20 @@ export class AuthorizationService {
 
     return this.httpClient
       .post<RolePermission>(`${this.config.api.services.auth}${this.config.api.endpoints.role.revokePermission}`, request)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
+        store: this.store,
+        spinner: this.ngxSpinnerService
+      })))
+  }
+
+  revokeAllPermissionToRole(permissionIds: number[], roleId: number) {
+    const request: any = {
+      roleId: roleId,
+      permissionIds: permissionIds
+    }
+
+    return this.httpClient
+      .post<RolePermission>(`${this.config.api.services.auth}${this.config.api.endpoints.role.revokeAllPermission}`, request)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.ngxSpinnerService
