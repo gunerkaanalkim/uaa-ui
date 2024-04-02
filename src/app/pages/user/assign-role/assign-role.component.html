@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="modal fade" id="assignRoleModal" tabindex="-1" aria-labelledby="assignRoleModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Assign Role</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Current Role : <span class="badge bg-primary">{{selectedRoleName}}</span>
+
+        <div class="divider"></div>
+
+        <div class="input-group pager">
+          <span class="input-group-text">
+            <b>
+              Select Role
+            </b>
+          </span>
+          <select class="form-control" (change)="onSelect($event)">
+            <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onAssignRole()">Assign</button>
+      </div>
+    </div>
+  </div>
+</div>
