@@ -41,6 +41,7 @@ import { PermissionEditingComponent } from './pages/permission/permission-editin
 import { PermissionDeleteComponent } from './pages/permission/permission-delete/permission-delete.component';
 import { PermissionListComponent } from './pages/permission/permission-list/permission-list.component';
 import { AuthorizationListComponent } from './pages/authorization/authorization-list/authorization-list.component';
+import { AssignRoleComponent } from './pages/user/assign-role/assign-role.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { AuthorizationListComponent } from './pages/authorization/authorization-
     PermissionDeleteComponent,
     PermissionListComponent,
     AuthorizationListComponent,
+    AssignRoleComponent,
   ],
   imports: [
     BrowserModule,
