@@ -53,6 +53,18 @@
                           Delete
                         </a>
                       </li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li>
+                        <a class="dropdown-item"
+                           data-bs-toggle="modal"
+                           data-bs-target="#assignRoleModal"
+                           (click)="onAssignRole(user.id)"
+                        >
+                          Assign Role
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </td>
@@ -77,3 +89,4 @@
 
 </div>
 <app-user-delete [selectedUserId]="selectedUserId"></app-user-delete>
+<app-assign-role [selectedUserId]="selectedUserId"></app-assign-role>
