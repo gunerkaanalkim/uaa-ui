@@ -50,4 +50,8 @@ export class UserListingComponent implements OnInit {
   onDelete(userId: number) {
     this.selectedUserId = userId;
   }
+
+  onAssignRole(userId: number) {
+    this.router.navigate(['/admin/user/list', {pageNo: this.page, selectedUser: userId}])
+  }
 }
