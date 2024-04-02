@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
 import {Store} from "@ngrx/store";
 import {NgxSpinnerService} from "ngx-spinner";
-import {AssignPermissionToRoleRequest, Permission, Role, RolePermission} from "../store/model";
+import {AssignPermissionToRoleRequest, Permission, Role, RolePermission, RoleUser} from "../store/model";
 import {catchError} from "rxjs";
 
 @Injectable({
@@ -80,6 +80,43 @@ export class AuthorizationService {
 
     return this.httpClient
       .post<RolePermission>(`${this.config.api.services.auth}${this.config.api.endpoints.role.revokeAllPermission}`, request)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
+        store: this.store,
+        spinner: this.ngxSpinnerService
+      })))
+  }
+
+  assignRoleToUser(userId: number, roleId: number) {
+    const request: any = {
+      roleId: roleId,
+      userId: userId
+    }
+
+    return this.httpClient
+      .post<RoleUser>(`${this.config.api.services.auth}${this.config.api.endpoints.user.assignRole}`, request)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
+        store: this.store,
+        spinner: this.ngxSpinnerService
+      })))
+  }
+
+  revokeRoleToUser(userId: number, roleId: number) {
+    const request: any = {
+      roleId: roleId,
+      userId: userId
+    }
+
+    return this.httpClient
+      .post<RoleUser>(`${this.config.api.services.auth}${this.config.api.endpoints.user.revokeRole}`, request)
+      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
+        store: this.store,
+        spinner: this.ngxSpinnerService
+      })))
+  }
+
+  getAssignedRoleOfUser(userId: number) {
+    return this.httpClient
+      .get<RoleUser>(`${this.config.api.services.auth}${this.config.api.endpoints.user.getAssignedRole}/${userId}`,)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.ngxSpinnerService

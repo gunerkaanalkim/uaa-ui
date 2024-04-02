@@ -31,7 +31,6 @@
                   <span *ngIf="isAllPermissionAssigned()">Revoke all permissions</span>
                 </label>
               </div>
-              <div class="divider"></div>
               <div class="accordion " id="permissions">
                 <div class="accordion-item" *ngFor="let groupedPermission of groupedPermissions | keyvalue">
                   <h2 class="accordion-header">

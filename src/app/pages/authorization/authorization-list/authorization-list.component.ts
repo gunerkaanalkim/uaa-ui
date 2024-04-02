@@ -135,11 +135,5 @@ export class AuthorizationListComponent implements OnInit {
 
   filterPermissions(permissions: Permission[]) {
     this.groupedPermissions = _.groupBy(permissions, 'controller');
-    console.log(this.groupedPermissions)
-  }
-
-  getGroupedPermissions(permissions: any) : Permission[] {
-    console.log(permissions)
-    return permissions;
   }
 }
