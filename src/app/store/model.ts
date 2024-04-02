@@ -300,3 +300,13 @@ export interface RolePermission {
   role: Role,
   permission: Permission
 }
+
+export interface AssignRoleToUserRequest {
+  userId: number
+  roleId: number
+}
+
+export interface RoleUser {
+  role: Role,
+  user: User
+}
