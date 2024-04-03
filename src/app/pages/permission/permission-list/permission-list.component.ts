@@ -45,7 +45,7 @@ export class PermissionListComponent {
   }
 
   onPageSelect(page: number) {
-    this.router.navigate(['/admin/permission/list', {page: page}])
+    this.router.navigate(['/admin/permission/list', {pageNo: page}])
   }
 
   onDelete(permissionId: number) {
