@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
+import {Realm, SelectDatasource} from "../../../store/model";
+import {RealmService} from "../../../services/realm.service";
 
 @Component({
   selector: 'app-user-edit',
@@ -22,11 +24,19 @@ export class UserEditComponent {
     [Validators.minLength(5), Validators.maxLength(200)]
   );
 
+  password = new FormControl('',
+    [Validators.minLength(5), Validators.maxLength(200)]
+  );
+
   userId!: number;
+  realms: Realm[] = [];
+  realmsDatasource: SelectDatasource[] | any[] = [];
+  selectedRealm!: Realm;
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly userService: UserService,
+    private readonly realmService: RealmService,
     private readonly router: Router
   ) {
   }
@@ -35,6 +45,7 @@ export class UserEditComponent {
     if (!this.formHasError()) {
       this.userService
         .edit({
+          realm: this.selectedRealm,
           username: this.username.value!,
           name: this.name.value!,
           email: this.email.value!,
@@ -59,6 +70,21 @@ export class UserEditComponent {
           this.email.setValue(user.email);
         })
     })
+
+    this.realmService
+      .getAllWithoutPage()
+      .subscribe(realms => {
+        this.realms = realms;
+        this.realmsDatasource = realms.map(realm => {
+          return {
+            label: realm.name,
+            value: realm.id
+          }
+        });
+
+        this.selectedRealm = this.realms[0];
+        console.log(this.selectedRealm)
+      })
   }
 
   usernameHasError() {
@@ -77,7 +103,15 @@ export class UserEditComponent {
     return this.email.invalid && (this.email.dirty || this.email.touched)
   }
 
+  passwordHasError() {
+    return this.password.invalid && (this.password.dirty || this.password.touched)
+  }
+
   formHasError() {
     return this.usernameHasError() || this.nameHasError() || this.surnameHasError() || this.emailHasError();
+  }
+
+  onRealmSelect(event: any) {
+    this.selectedRealm = this.realms.filter(realm => realm.id === event.target.value)[0];
   }
 }

@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <app-header></app-header>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="">
+      <div class="mb-3">
+        <label for="name" class="form-label"> Realm Name </label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Realm Name"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': realmNameHasError() }"
+          [formControl]="realmName"
+        />
+        <div id="realmNameValidation" class="invalid-feedback">
+          Please enter a valid realm name.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="realmCode" class="form-label"> Realm Code </label>
+        <input
+          type="text"
+          class="form-control"
+          id="realmCode"
+          placeholder="Realm Code"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': realmCodeHasError() }"
+          [formControl]="realmCode"
+        />
+        <div id="realmCodeValidation" class="invalid-feedback">
+          Please enter a valid realm code.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="realmDescription" class="form-label"> Realm Description </label>
+        <input
+          type="text"
+          class="form-control"
+          id="realmDescription"
+          placeholder="Realm Description"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': realmDescriptionHasError() }"
+          [formControl]="realmDescription"
+        />
+        <div id="permissionDescriptionValidation" class="invalid-feedback">
+          Please enter a valid permission description.
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" (click)="onEdit()" [disabled]="formHasError()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

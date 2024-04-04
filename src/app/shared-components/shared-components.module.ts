@@ -11,6 +11,7 @@ import {RouterLink} from "@angular/router";
 import { SearchFieldComponent } from './search-field/search-field.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ManagementMenuComponent } from './management-menu/management-menu.component';
+import { SelectComponent } from './select/select.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ManagementMenuComponent } from './management-menu/management-menu.compo
     SearchFieldComponent,
     SearchFieldComponent,
     ManagementMenuComponent,
+    SelectComponent,
   ],
   exports: [
     HeaderComponent,
@@ -37,6 +39,7 @@ import { ManagementMenuComponent } from './management-menu/management-menu.compo
     SearchFieldComponent,
     SearchFieldComponent,
     ManagementMenuComponent,
+    SelectComponent,
   ],
   imports: [
     CommonModule,

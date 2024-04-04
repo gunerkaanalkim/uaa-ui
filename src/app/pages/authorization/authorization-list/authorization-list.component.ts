@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {RoleService} from "../../../services/role.service";
 import {Permission, Role} from "../../../store/model";
 import {AuthorizationService} from "../../../services/authorization.service";
 import {PermissionService} from "../../../services/permission.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import * as _ from 'lodash';
+import {RoleService} from "../../../services/role.service";
 
 
 @Component({
@@ -134,6 +134,6 @@ export class AuthorizationListComponent implements OnInit {
   }
 
   filterPermissions(permissions: Permission[]) {
-    this.groupedPermissions = _.groupBy(permissions, 'controller');
+    this.groupedPermissions = _.groupBy(permissions, "groupName");
   }
 }

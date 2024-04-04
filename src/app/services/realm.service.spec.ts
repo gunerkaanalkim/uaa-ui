@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RealmService } from './role.service';
+import { RealmService } from './realm.service';
 
-describe('RoleService', () => {
+describe('RealmService', () => {
   let service: RealmService;
 
   beforeEach(() => {

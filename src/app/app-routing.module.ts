@@ -21,6 +21,9 @@ import {PermissionListComponent} from "./pages/permission/permission-list/permis
 import {PermissionEditingComponent} from "./pages/permission/permission-editing/permission-editing.component";
 import {PermissionCreateComponent} from "./pages/permission/permission-create/permission-create.component";
 import {AuthorizationListComponent} from "./pages/authorization/authorization-list/authorization-list.component";
+import {RealmListingComponent} from "./pages/realm/realm-listing/realm-listing.component";
+import {RealmEditComponent} from "./pages/realm/realm-edit/realm-edit.component";
+import {RealmCreateComponent} from "./pages/realm/realm-create/realm-create.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'splash', pathMatch: 'full'},
@@ -43,6 +46,9 @@ const routes: Routes = [
   {path: 'admin/permission/list', component: PermissionListComponent},
   {path: 'admin/permission/edit', component: PermissionEditingComponent},
   {path: 'admin/permission/create', component: PermissionCreateComponent},
+  {path: 'admin/realm/list', component: RealmListingComponent},
+  {path: 'admin/realm/edit', component: RealmEditComponent},
+  {path: 'admin/realm/create', component: RealmCreateComponent},
   {path: 'admin/authorization/list', component: AuthorizationListComponent},
   // {path: 'integration/etsy', component: ProductDBComponent},
   {path: '404', component: NotFoundComponent},

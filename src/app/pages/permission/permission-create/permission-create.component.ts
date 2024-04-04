@@ -25,6 +25,10 @@ export class PermissionCreateComponent {
     [Validators.minLength(1), Validators.maxLength(200)]
   );
 
+  permissionGroupName = new FormControl('',
+    [Validators.minLength(1), Validators.maxLength(200)]
+  );
+
   permissionId!: number;
 
   constructor(
@@ -41,7 +45,8 @@ export class PermissionCreateComponent {
           url: this.permissionURL.value!,
           title: this.permissionName.value!,
           description: this.permissionDescription.value!,
-          controller: this.permissionController.value!
+          controller: this.permissionController.value!,
+          groupName: this.permissionGroupName.value!
         })
         .subscribe(shop => {
           this.router.navigate(['/admin/permission/list', {pageNo: 1}])
@@ -68,7 +73,11 @@ export class PermissionCreateComponent {
     return this.permissionController.invalid && (this.permissionController.dirty || this.permissionController.touched)
   }
 
+  permissionGroupNameHasError() {
+    return this.permissionGroupName.invalid && (this.permissionGroupName.dirty || this.permissionGroupName.touched)
+  }
+
   formHasError() {
-    return this.permissionNameHasError() || this.permissionDescriptionHasError();
+    return this.permissionNameHasError() || this.permissionDescriptionHasError() || this.permissionURLHasError() || this.permissionControllerHasError() || this.permissionGroupNameHasError();
   }
 }

@@ -1,4 +1,8 @@
 <ul class="list-group">
+  <li [routerLink]="['/admin/realm/list', {pageNo: 1}]" class="list-group-item"
+      [ngClass]="{active: activeElement === 'realm'}" aria-current="true">
+    <a><i class="bi bi-house"></i> Realm</a>
+  </li>
   <li [routerLink]="['/admin/user/list', {pageNo: 1}]" class="list-group-item"
       [ngClass]="{active: activeElement === 'user'}" aria-current="true">
     <a><i class="bi bi-people"></i> User</a>
