@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import {Permission, Role} from "../../../store/model";
-import {RoleService} from "../../../services/role.service";
+import {Component} from '@angular/core';
+import {Permission} from "../../../store/model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PermissionService} from "../../../services/permission.service";
 

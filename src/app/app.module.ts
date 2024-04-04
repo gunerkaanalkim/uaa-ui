@@ -28,20 +28,24 @@ import {CategoryDetailsComponent} from './pages/category-details/category-detail
 import {ProductDBComponent} from './pages/product-db/product-db.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { UserListingComponent } from './pages/user/user-listing/user-listing.component';
-import { UserEditComponent } from './pages/user/user-edit/user-edit.component';
-import { UserDeleteComponent } from './pages/user/user-delete/user-delete.component';
-import { UserCreateComponent } from './pages/user/user-create/user-create.component';
-import { RoleCreateComponent } from './pages/role/role-create/role-create.component';
-import { RoleListingComponent } from './pages/role/role-listing/role-listing.component';
-import { RoleEditComponent } from './pages/role/role-edit/role-edit.component';
-import { RoleDeleteComponent } from './pages/role/role-delete/role-delete.component';
-import { PermissionCreateComponent } from './pages/permission/permission-create/permission-create.component';
-import { PermissionEditingComponent } from './pages/permission/permission-editing/permission-editing.component';
-import { PermissionDeleteComponent } from './pages/permission/permission-delete/permission-delete.component';
-import { PermissionListComponent } from './pages/permission/permission-list/permission-list.component';
-import { AuthorizationListComponent } from './pages/authorization/authorization-list/authorization-list.component';
-import { AssignRoleComponent } from './pages/user/assign-role/assign-role.component';
+import {UserListingComponent} from './pages/user/user-listing/user-listing.component';
+import {UserEditComponent} from './pages/user/user-edit/user-edit.component';
+import {UserDeleteComponent} from './pages/user/user-delete/user-delete.component';
+import {UserCreateComponent} from './pages/user/user-create/user-create.component';
+import {RoleCreateComponent} from './pages/role/role-create/role-create.component';
+import {RoleListingComponent} from './pages/role/role-listing/role-listing.component';
+import {RoleEditComponent} from './pages/role/role-edit/role-edit.component';
+import {RoleDeleteComponent} from './pages/role/role-delete/role-delete.component';
+import {PermissionCreateComponent} from './pages/permission/permission-create/permission-create.component';
+import {PermissionEditingComponent} from './pages/permission/permission-editing/permission-editing.component';
+import {PermissionDeleteComponent} from './pages/permission/permission-delete/permission-delete.component';
+import {PermissionListComponent} from './pages/permission/permission-list/permission-list.component';
+import {AuthorizationListComponent} from './pages/authorization/authorization-list/authorization-list.component';
+import {AssignRoleComponent} from './pages/user/assign-role/assign-role.component';
+import {RealmListingComponent} from './pages/realm/realm-listing/realm-listing.component';
+import { RealmCreateComponent } from './pages/realm/realm-create/realm-create.component';
+import { RealmDeleteComponent } from './pages/realm/realm-delete/realm-delete.component';
+import { RealmEditComponent } from './pages/realm/realm-edit/realm-edit.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +77,10 @@ import { AssignRoleComponent } from './pages/user/assign-role/assign-role.compon
     PermissionListComponent,
     AuthorizationListComponent,
     AssignRoleComponent,
+    RealmListingComponent,
+    RealmCreateComponent,
+    RealmDeleteComponent,
+    RealmEditComponent,
   ],
   imports: [
     BrowserModule,

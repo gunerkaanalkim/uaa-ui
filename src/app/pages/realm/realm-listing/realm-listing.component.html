@@ -2,14 +2,14 @@
   <app-header></app-header>
   <div class="row">
     <div class="col-lg-2">
-      <app-management-menu [activeElement]="'role'"></app-management-menu>
+      <app-management-menu [activeElement]="'realm'"></app-management-menu>
     </div>
     <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <button class="btn btn-outline-primary btn-sm float-end"
-                  [routerLink]="['/admin/role/create']">New Role</button>
-          System Roles
+                  [routerLink]="['/admin/realm/create']">New Realm</button>
+          Realm List
         </div>
         <div class="card-body" style="min-height: 500px">
           <div class="table-responsive" style="min-height: 500px">
@@ -17,16 +17,18 @@
               <thead class="table-light">
               <tr>
                 <th>Id</th>
-                <th>Role Name</th>
-                <th>Role Description</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Description</th>
                 <th></th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let role of roles">
-                <td>{{role.id}}</td>
-                <td>{{role.name}}</td>
-                <td>{{role.code}}</td>
+              <tr *ngFor="let realm of realms">
+                <td>{{realm.id}}</td>
+                <td>{{realm.name}}</td>
+                <td>{{realm.code}}</td>
+                <td>{{realm.description}}</td>
                 <td>
                   <div class="dropdown">
                     <button class="btn btn-sm btn-outline-primary dropdown-toggle"
@@ -38,15 +40,15 @@
                     <ul class="dropdown-menu">
                       <li>
                         <a class="dropdown-item"
-                           [routerLink]="['/admin/role/edit', {userId: role.id}]">
+                           [routerLink]="['/admin/realm/edit', {realmId: realm.id}]">
                           Edit
                         </a>
                       </li>
                       <li>
                         <a class="dropdown-item"
                            data-bs-toggle="modal"
-                           data-bs-target="#deleteUserModal"
-                           (click)="onDelete(role.id)"
+                           data-bs-target="#deleteRealmModal"
+                           (click)="onDelete(realm.id)"
                         >
                           Delete
                         </a>
@@ -61,7 +63,7 @@
         </div>
 
         <div class="card-footer">
-          <app-pager *ngIf="roles.length"
+          <app-pager *ngIf="realms.length"
                      [currentPage]="pageable.currentPage"
                      [lastPage]="pageable.lastPage"
                      [perPage]="pageable.perPage"
@@ -74,4 +76,4 @@
   </div>
 
 </div>
-<app-role-delete [selectedRoleId]="selectedRoleId"></app-role-delete>
+<app-realm-delete [selectedRealmId]="selectedRealmId"></app-realm-delete>

@@ -73,6 +73,23 @@
           Please enter a valid permission controller.
         </div>
       </div>
+      <div class="mb-3">
+        <label for="permissionGroupName" class="form-label"> Permission Group Name </label>
+        <input
+          type="text"
+          class="form-control"
+          id="permissionGroupName"
+          placeholder="Permission Group Name"
+          minlength="1"
+          maxlength="200"
+          required=""
+          [ngClass]="{ 'is-invalid': permissionGroupNameHasError() }"
+          [formControl]="permissionGroupName"
+        />
+        <div id="permissionGroupNameValidation" class="invalid-feedback">
+          Please enter a valid permission group name.
+        </div>
+      </div>
       <div class="d-grid gap-2">
         <button class="btn btn-primary" type="button" (click)="onEdit()" [disabled]="formHasError()">
           Save

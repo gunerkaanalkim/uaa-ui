@@ -3,6 +3,8 @@ import {FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
 import * as bcrypt from 'bcryptjs'
+import {Realm, SelectDatasource} from "../../../store/model";
+import {RealmService} from "../../../services/realm.service";
 
 @Component({
   selector: 'app-user-create',
@@ -32,8 +34,13 @@ export class UserCreateComponent {
 
   userId!: number;
 
+  realms: Realm[] = [];
+  realmsDatasource: SelectDatasource[] | any[] = [];
+  selectedRealm!: Realm;
+
   constructor(
     private readonly userService: UserService,
+    private readonly realmService: RealmService,
     private readonly router: Router
   ) {
   }
@@ -45,6 +52,7 @@ export class UserCreateComponent {
 
       this.userService
         .create({
+          realm: this.selectedRealm,
           username: this.username.value!,
           name: this.name.value!,
           email: this.email.value!,
@@ -59,6 +67,18 @@ export class UserCreateComponent {
   }
 
   ngOnInit() {
+    this.realmService
+      .getAllWithoutPage()
+      .subscribe(realms => {
+        this.realmsDatasource = realms.map(realm => {
+          return {
+            label: realm.name,
+            value: realm.id
+          }
+        });
+
+        this.selectedRealm = this.realmsDatasource[0].value;
+      })
   }
 
   usernameHasError() {
@@ -83,5 +103,9 @@ export class UserCreateComponent {
 
   formHasError() {
     return this.usernameHasError() || this.nameHasError() || this.surnameHasError() || this.emailHasError();
+  }
+
+  onRoleSelect(event: any) {
+    this.selectedRealm = this.realms.filter(realm => realm.id === event.target.value)[0];
   }
 }

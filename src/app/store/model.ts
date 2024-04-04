@@ -235,6 +235,7 @@ export interface User {
   username: string
   email: string
   password?: string
+  realm: Realm
 }
 
 export interface PageableUsers {
@@ -257,6 +258,7 @@ export interface Permission {
   description: string
   url: string,
   isAssigned?: boolean
+  groupName: string
 }
 
 export interface PageablePermissions {
@@ -309,4 +311,29 @@ export interface AssignRoleToUserRequest {
 export interface RoleUser {
   role: Role,
   user: User
+}
+
+export interface Realm {
+  id: number
+  name?: string
+  code?: string
+  description?: string
+}
+
+export interface PageableRealms {
+  content: Realm[],
+  first: boolean,
+  last: boolean
+  number: number,
+  numberOfElements: number,
+  size: 10,
+  totalElements: number,
+  totalPages: number,
+  pageable: Pageable
+  sort: PageableSort
+}
+
+export interface SelectDatasource {
+  label: string,
+  value: string
 }
