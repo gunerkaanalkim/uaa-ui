@@ -70,6 +70,7 @@ export class UserCreateComponent {
     this.realmService
       .getAllWithoutPage()
       .subscribe(realms => {
+        this.realms = realms;
         this.realmsDatasource = realms.map(realm => {
           return {
             label: realm.name,
@@ -77,7 +78,7 @@ export class UserCreateComponent {
           }
         });
 
-        this.selectedRealm = this.realmsDatasource[0].value;
+        this.selectedRealm = this.realms[0];
       })
   }
 
@@ -106,6 +107,6 @@ export class UserCreateComponent {
   }
 
   onRoleSelect(event: any) {
-    this.selectedRealm = this.realms.filter(realm => realm.id === event.target.value)[0];
+    this.selectedRealm = this.realms.filter(realm => realm.id === Number(event.target.value))[0];
   }
 }
