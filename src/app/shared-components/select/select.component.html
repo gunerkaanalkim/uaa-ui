@@ -2,6 +2,10 @@
   <label class="form-label">{{label}}</label>
 
   <select class="form-select" (change)="_onSelect($event)">
-    <option *ngFor="let item of datasource" [value]="item.value">{{item.label}}</option>
+    <option *ngFor="let item of datasource"
+            [value]="item.value"
+            [selected]="selectedItem == item.value">
+      {{item.label}}
+    </option>
   </select>
 </div>

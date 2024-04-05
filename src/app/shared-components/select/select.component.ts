@@ -8,6 +8,7 @@ import {SelectDatasource} from "../../store/model";
 })
 export class SelectComponent {
   @Input() label: String = "";
+  @Input() selectedItem : String = "";
   @Input() datasource : SelectDatasource[] = [];
   @Output() onSelect = new EventEmitter();
 

@@ -68,6 +68,8 @@ export class UserEditComponent {
           this.name.setValue(user.name);
           this.surname.setValue(user.surname);
           this.email.setValue(user.email);
+
+          this.selectedRealm = user.realm;
         })
     })
 
@@ -82,8 +84,6 @@ export class UserEditComponent {
           }
         });
 
-        this.selectedRealm = this.realms[0];
-        console.log(this.selectedRealm)
       })
   }
 
@@ -112,6 +112,8 @@ export class UserEditComponent {
   }
 
   onRealmSelect(event: any) {
-    this.selectedRealm = this.realms.filter(realm => realm.id === event.target.value)[0];
+    this.selectedRealm = this.realms.filter(realm => realm.id === Number(event.target.value))[0];
   }
+
+  protected readonly String = String;
 }

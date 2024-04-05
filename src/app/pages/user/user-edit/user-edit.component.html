@@ -5,7 +5,12 @@
 <div class="container-fluid">
   <div class="row">
     <div class="">
-      <app-select [label]="'Roles'" [datasource]="realmsDatasource" (onSelect)="onRealmSelect($event)"></app-select>
+      <app-select *ngIf="selectedRealm"
+                  [label]="'Realms'"
+                  [datasource]="realmsDatasource"
+                  [selectedItem]="String(selectedRealm.id)"
+                  (onSelect)="onRealmSelect($event)">
+      </app-select>
       <div class="mb-3">
         <label for="username" class="form-label"> Username </label>
         <input
