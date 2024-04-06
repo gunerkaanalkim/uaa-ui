@@ -3,8 +3,8 @@ export const environment = {
   name: 'prod',
   api: {
     services: {
-      auth: 'http://localhost:8080/uaa/api',
-      integrator: 'http://localhost:8081/integrator/api'
+      auth: 'https://auth-server-lohx2.ondigitalocean.app/uaa/api',
+      integrator: 'https://integrator-app-p5hts.ondigitalocean.app/integrator/api'
     },
     endpoints: {
       product: {
