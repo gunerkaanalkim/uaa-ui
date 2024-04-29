@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Store} from "@ngrx/store";
-import {setUserInfo} from "../../store/project.action";
+import {setAuthenticationResponse} from "../../store/project.action";
 import {Router} from "@angular/router";
 import {NgxSpinnerService} from "ngx-spinner";
 
@@ -35,11 +35,10 @@ export class LoginComponent {
 
       this.authenticationService
         .login(this.username.value!, this.password.value!)
-        .subscribe(response => {
-          this.store.dispatch(setUserInfo({userDetails: response}))
+        .subscribe(authenticationResponse => {
+          this.store.dispatch(setAuthenticationResponse({authenticationResponse: authenticationResponse}))
           this.router.navigate(['home'])
           this.spinner.hide();
-
         })
     }
   }

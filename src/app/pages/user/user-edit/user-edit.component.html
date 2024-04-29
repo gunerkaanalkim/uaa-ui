@@ -80,23 +80,6 @@
           Please enter a valid email
         </div>
       </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password </label>
-        <input
-          type="text"
-          class="form-control"
-          id="password"
-          placeholder="Password"
-          minlength="1"
-          maxlength="200"
-          required=""
-          [ngClass]="{ 'is-invalid': passwordHasError() }"
-          [formControl]="password"
-        />
-        <div id="passwordValidation" class="invalid-feedback">
-          Please enter a valid password.
-        </div>
-      </div>
       <div class="d-grid gap-2">
         <button class="btn btn-primary" type="button" (click)="onEdit()" [disabled]="formHasError()">
           Update

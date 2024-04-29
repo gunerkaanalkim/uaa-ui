@@ -24,10 +24,6 @@ export class UserEditComponent {
     [Validators.minLength(5), Validators.maxLength(200)]
   );
 
-  password = new FormControl('',
-    [Validators.minLength(5), Validators.maxLength(200)]
-  );
-
   userId!: number;
   realms: Realm[] = [];
   realmsDatasource: SelectDatasource[] | any[] = [];
@@ -101,10 +97,6 @@ export class UserEditComponent {
 
   emailHasError() {
     return this.email.invalid && (this.email.dirty || this.email.touched)
-  }
-
-  passwordHasError() {
-    return this.password.invalid && (this.password.dirty || this.password.touched)
   }
 
   formHasError() {

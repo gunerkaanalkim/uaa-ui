@@ -1,7 +1,7 @@
-import {InitialStateType, UserDetails} from "./model";
+import {InitialStateType, AuthenticationResponse} from "./model";
 
 export const initialState: InitialStateType = {
-  userDetails: {} as UserDetails,
+  authenticationResponse: {} as AuthenticationResponse,
   shops: [],
   isLoaderVisible: false,
   httpError: null
