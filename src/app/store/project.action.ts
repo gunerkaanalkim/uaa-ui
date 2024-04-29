@@ -1,13 +1,13 @@
 import {createAction, props} from "@ngrx/store";
-import {HttpError, Shop, UserDetails} from "./model";
+import {HttpError, Shop, AuthenticationResponse} from "./model";
 
 export const checkUserLoggedIn = createAction(
   "[Splash Component] CheckUserLoggedIn"
 );
 
-export const setUserInfo = createAction(
-  "[Login Component] SetUserInfo",
-  props<{ userDetails: UserDetails }>()
+export const setAuthenticationResponse = createAction(
+  "[Login Component] SetAuthenticationResponse",
+  props<{ authenticationResponse: AuthenticationResponse }>()
 );
 
 export const setAllShops = createAction(

@@ -7,12 +7,12 @@ export const selectState = createFeatureSelector<fromProject.InitialStateType>(
 
 export const selectToken = createSelector(
     selectState,
-    (state: fromProject.InitialStateType) => state.userDetails.token
+    (state: fromProject.InitialStateType) => state.authenticationResponse.access_token
 )
 
 export const selectUserDetails = createSelector(
   selectState,
-  (state: fromProject.InitialStateType) => state.userDetails
+  (state: fromProject.InitialStateType) => state.authenticationResponse
 )
 
 export const selectShops = createSelector(

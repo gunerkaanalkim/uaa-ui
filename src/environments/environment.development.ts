@@ -1,9 +1,10 @@
 export const environment = {
   production: false,
   name: 'local',
+  realmId: 1,
   api: {
     services: {
-      auth: 'http://localhost:8080/uaa/api',
+      auth: 'http://localhost:8080/realms/external/protocol/openid-connect',
       integrator: 'http://localhost:8081/integrator/api'
     },
     endpoints: {
@@ -108,7 +109,7 @@ export const environment = {
       },
       authenticate : {
         whoAmI: '/authenticate/who-am-i',
-        login: '/authenticate/login',
+        login: '/token',
       }
     }
   }

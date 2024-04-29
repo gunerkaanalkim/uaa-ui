@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
   name: 'prod',
+  realmId: 1,
   api: {
     services: {
       auth: 'https://auth-server-lohx2.ondigitalocean.app/uaa/api',
