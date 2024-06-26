@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpError, AuthenticationResponse} from "../../store/model";
+import {HttpError} from "../../store/model";
 import {Store} from "@ngrx/store";
 import {LOGOUT} from "../../store/project.action";
 import {Router} from "@angular/router";
-import {AuthenticationService} from "../../services/authentication.service";
-import {selectHttpError, selectUserDetails} from "../../store/project.selector";
+import {selectHttpError} from "../../store/project.selector";
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-header',
@@ -18,12 +18,11 @@ export class HeaderComponent implements OnInit {
   constructor(
     private readonly store: Store,
     private readonly router: Router,
-    private readonly authenticationService:AuthenticationService
+    private readonly keycloakService: KeycloakService
   ) {
   }
 
   ngOnInit(): void {
-    this.whoAmI();
     this.selectHttpError();
 
     let savedTheme = localStorage.getItem('theme')!;
@@ -41,13 +40,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  whoAmI() {
-    this.authenticationService.whoAmI();
-  }
-
   logout() {
     this.store.dispatch(LOGOUT());
-    this.router.navigate(['/login']);
+    this.keycloakService.logout();
   }
 
   private selectHttpError() {

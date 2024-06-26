@@ -106,10 +106,6 @@ export const environment = {
         saveProductVariantOptions: '/integration/save-product-variant-options',
         addToProductDb : '/integration/add-to-product-db',
         generateContent : '/integration/chat-gpt/generate-content',
-      },
-      authenticate : {
-        whoAmI: '/authenticate/who-am-i',
-        login: '/token',
       }
     }
   }

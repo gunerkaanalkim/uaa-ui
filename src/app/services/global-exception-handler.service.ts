@@ -20,12 +20,7 @@ export class GlobalExceptionHandlerService {
 
     if (error.status === 0) {
       console.error('An error occurred:', error.error);
-    } else if (error.status === 401) {
-      location.replace('/login')
     } else {
-      if (error.error.message === "401 Token not valid.") {
-        location.replace('/login')
-      }
       console.error(
         `Backend returned code ${error.status}, body was: `, error.error);
     }

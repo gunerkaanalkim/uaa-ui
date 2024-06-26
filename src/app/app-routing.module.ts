@@ -1,9 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from "./pages/login/login.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
 import {HomeComponent} from "./pages/home/home.component";
-import {SplashComponent} from "./pages/splash/splash.component";
 import {NewShopComponent} from "./pages/shop/new-shop/new-shop.component";
 import {EditShopComponent} from "./pages/shop/edit-shop/edit-shop.component";
 import {ListProviderComponent} from "./pages/provider/list-provider/list-provider.component";
@@ -26,10 +24,8 @@ import {RealmEditComponent} from "./pages/realm/realm-edit/realm-edit.component"
 import {RealmCreateComponent} from "./pages/realm/realm-create/realm-create.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'splash', pathMatch: 'full'},
-  {path: 'splash', component: SplashComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
   {path: 'shop/new', component: NewShopComponent},
   {path: 'shop/edit/:shopId', component: EditShopComponent},
   {path: 'provider', component: ListProviderComponent},

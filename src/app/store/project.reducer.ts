@@ -6,13 +6,6 @@ import * as ProjectViewActions from './project.action';
 
 export const mainReducer = createImmerReducer(
   initialState,
-  on(ProjectViewActions.checkUserLoggedIn, (state) => {
-    return state;
-  }),
-  on(ProjectViewActions.setAuthenticationResponse, (state, {authenticationResponse}) => {
-    state.authenticationResponse = authenticationResponse;
-    return state;
-  }),
   on(ProjectViewActions.setAllShops, (state, {shops}) => {
     state.shops = shops;
     return state;

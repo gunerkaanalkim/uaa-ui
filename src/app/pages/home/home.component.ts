@@ -4,6 +4,7 @@ import {Store} from "@ngrx/store";
 import {setAllShops} from "../../store/project.action";
 import {Shop} from "../../store/model";
 import {NgxSpinnerService} from "ngx-spinner";
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-home',
@@ -16,12 +17,14 @@ export class HomeComponent implements OnInit {
   constructor(
     private readonly shopService: ShopService,
     private readonly store: Store,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
   ) {
   }
 
   ngOnInit(): void {
     this.getAllShops();
+    //  set user details and get it from header
+    //  set authguard
   }
 
   getAllShops() {

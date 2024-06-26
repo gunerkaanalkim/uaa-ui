@@ -1,21 +1,18 @@
-import {isDevMode, NgModule} from '@angular/core';
+import {APP_INITIALIZER, isDevMode, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SharedComponentsModule} from "./shared-components/shared-components.module";
-import {LoginComponent} from './pages/login/login.component';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
 import {HomeComponent} from './pages/home/home.component';
-import {SplashComponent} from './pages/splash/splash.component';
 import {StoreModule} from '@ngrx/store';
 import {mainReducer} from "./store/project.reducer";
 import {metaReducers} from './store/meta-reducers';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HttpClientModule} from "@angular/common/http";
 import {APP_CONFIG} from "./config/tokens";
 import {environment} from "../environments/environment";
-import {AuthenticationInterceptor} from "./services/authentication.interceptor";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NewShopComponent} from './pages/shop/new-shop/new-shop.component';
 import {EditShopComponent} from './pages/shop/edit-shop/edit-shop.component';
@@ -46,14 +43,28 @@ import {RealmListingComponent} from './pages/realm/realm-listing/realm-listing.c
 import { RealmCreateComponent } from './pages/realm/realm-create/realm-create.component';
 import { RealmDeleteComponent } from './pages/realm/realm-delete/realm-delete.component';
 import { RealmEditComponent } from './pages/realm/realm-edit/realm-edit.component';
+import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
+
+export const initializeKeycloak = (keycloak: KeycloakService) => async () =>
+  keycloak.init({
+    config: {
+      url: "http://localhost:8090",
+      realm: "external",
+      clientId: "frontend-application",
+    },
+    loadUserProfileAtStartUp: true,
+    enableBearerInterceptor: true,
+    initOptions: {
+      onLoad: 'login-required',  // allowed values 'login-required', 'check-sso';
+      flow: "implicit"          // allowed values 'standard', 'implicit', 'hybrid';
+    },
+  });
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NotFoundComponent,
     HomeComponent,
-    SplashComponent,
     NewShopComponent,
     EditShopComponent,
     ListShopComponent,
@@ -83,6 +94,7 @@ import { RealmEditComponent } from './pages/realm/realm-edit/realm-edit.componen
     RealmEditComponent,
   ],
   imports: [
+    KeycloakAngularModule,
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
@@ -105,10 +117,11 @@ import { RealmEditComponent } from './pages/realm/realm-edit/realm-edit.componen
       useValue: environment
     },
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthenticationInterceptor,
-      multi: true
-    }
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    },
   ],
   bootstrap: [AppComponent]
 })
