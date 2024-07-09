@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {APP_CONFIG} from "../config/tokens";
 import {catchError} from "rxjs";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
-import {UserDetails} from "../store/model";
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {NgxSpinnerService} from "ngx-spinner";
@@ -26,7 +25,7 @@ export class AuthenticationService {
 
   whoAmI() {
     return this.httpClient
-      .get<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.authenticate.whoAmI}`)
+      .get<any>(`${this.config.api.services.auth}${this.config.api.endpoints.authenticate.whoAmI}`)
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
         spinner: this.spinner
@@ -36,7 +35,7 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
     return this.httpClient
-      .post<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.authenticate.login}`, {
+      .post<any>(`${this.config.api.services.auth}${this.config.api.endpoints.authenticate.login}`, {
         username: username,
         password: password,
         realmId: 1
