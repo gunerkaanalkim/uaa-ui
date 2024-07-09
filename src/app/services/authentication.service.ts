@@ -38,7 +38,8 @@ export class AuthenticationService {
     return this.httpClient
       .post<UserDetails>(`${this.config.api.services.auth}${this.config.api.endpoints.authenticate.login}`, {
         username: username,
-        password: password
+        password: password,
+        realmId: 1
       })
       .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
         store: this.store,
