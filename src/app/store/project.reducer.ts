@@ -9,8 +9,8 @@ export const mainReducer = createImmerReducer(
   on(ProjectViewActions.checkUserLoggedIn, (state) => {
     return state;
   }),
-  on(ProjectViewActions.setUserInfo, (state, {userDetails}) => {
-    state.userDetails = userDetails;
+  on(ProjectViewActions.setAuthenticationResponse, (state, {authenticationResponse}) => {
+    state.authenticationResponse = authenticationResponse;
     return state;
   }),
   on(ProjectViewActions.setAllShops, (state, {shops}) => {

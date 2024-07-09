@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpError, UserDetails} from "../../store/model";
+import {HttpError, AuthenticationResponse} from "../../store/model";
 import {Store} from "@ngrx/store";
 import {LOGOUT} from "../../store/project.action";
 import {Router} from "@angular/router";
@@ -12,7 +12,6 @@ import {selectHttpError, selectUserDetails} from "../../store/project.selector";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  userDetails!: UserDetails;
   httpError: HttpError | null = null;
   theme: string = '';
 
@@ -25,7 +24,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.whoAmI();
-    this.selectUserDetails();
     this.selectHttpError();
 
     let savedTheme = localStorage.getItem('theme')!;
@@ -50,14 +48,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.store.dispatch(LOGOUT());
     this.router.navigate(['/login']);
-  }
-
-  private selectUserDetails() {
-    this.store
-      .select(selectUserDetails)
-      .subscribe(userDetails => {
-      this.userDetails = userDetails;
-    })
   }
 
   private selectHttpError() {
