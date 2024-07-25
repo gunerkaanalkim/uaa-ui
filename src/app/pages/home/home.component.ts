@@ -14,24 +14,10 @@ export class HomeComponent implements OnInit {
   shops: Shop[] = [];
 
   constructor(
-    private readonly shopService: ShopService,
-    private readonly store: Store,
-    private spinner: NgxSpinnerService
   ) {
   }
 
   ngOnInit(): void {
-    this.getAllShops();
   }
 
-  getAllShops() {
-    this.spinner.show();
-    this.shopService
-      .getAllWithoutPage()
-      .subscribe(shops => {
-        this.store.dispatch(setAllShops({shops: shops}))
-        this.shops = shops;
-        this.spinner.hide();
-      })
-  }
 }

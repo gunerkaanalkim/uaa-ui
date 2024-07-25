@@ -17,15 +17,6 @@ import {APP_CONFIG} from "./config/tokens";
 import {environment} from "../environments/environment";
 import {AuthenticationInterceptor} from "./services/authentication.interceptor";
 import {ReactiveFormsModule} from "@angular/forms";
-import {NewShopComponent} from './pages/shop/new-shop/new-shop.component';
-import {EditShopComponent} from './pages/shop/edit-shop/edit-shop.component';
-import {ListShopComponent} from './pages/shop/list-shop/list-shop.component';
-import {DeleteShopComponent} from './pages/shop/delete-shop/delete-shop.component';
-import {ListProviderComponent} from './pages/provider/list-provider/list-provider.component';
-import {ProviderDetailComponent} from './pages/provider/provider-detail/provider-detail.component';
-import {BrandDetailComponent} from './pages/brand-detail/brand-detail.component';
-import {CategoryDetailsComponent} from './pages/category-details/category-details.component';
-import {ProductDBComponent} from './pages/product-db/product-db.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {UserListingComponent} from './pages/user/user-listing/user-listing.component';
@@ -54,15 +45,6 @@ import { RealmEditComponent } from './pages/realm/realm-edit/realm-edit.componen
     NotFoundComponent,
     HomeComponent,
     SplashComponent,
-    NewShopComponent,
-    EditShopComponent,
-    ListShopComponent,
-    DeleteShopComponent,
-    ListProviderComponent,
-    ProviderDetailComponent,
-    BrandDetailComponent,
-    CategoryDetailsComponent,
-    ProductDBComponent,
     UserListingComponent,
     UserEditComponent,
     UserDeleteComponent,
