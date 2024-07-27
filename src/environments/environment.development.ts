@@ -62,7 +62,7 @@ export const environment = {
       },
       authenticate : {
         whoAmI: '/authenticate/who-am-i',
-        login: '/authenticate/login',
+        login: '/authenticate/login/realm',
       }
     }
   }
