@@ -11,81 +11,8 @@ export interface AuthenticationResponse {
   userInfo: UserInfo
 }
 
-export interface Shop {
-  createdBy?: string
-  createdDate?: number
-  lastModifiedBy?: string
-  lastModifiedDate?: string
-  description: string
-  etsyAccountId: string
-  title: string
-  id: number
-}
-
-export interface Provider {
-  createdBy?: string
-  createdDate?: number
-  lastModifiedBy?: string
-  lastModifiedDate?: string
-  providerAlias: string
-  title: string
-  id: number
-}
-
-export interface Brand {
-  id: any
-  providerAlias: string
-  brandId: number
-  brandName: string
-  slug: string
-}
-
-export interface ProductResponse {
-  products: Product[]
-  currentPage: number
-  lastPage: number,
-  perPage: number
-  total: number
-}
-
-export interface Product {
-  id: number
-  provider: Provider
-  shop: Shop
-  providerAlias: string
-  productId: number
-  title: string
-  currency: string
-  price: string
-  weight: string
-  status: string
-  isFeatured: number
-  isVerified: number
-  stockCount: number
-  titleSlug: string
-  productColor: string
-  details: string
-  shortDescription: any
-  stockCode: string
-  gender: string
-  barcode: string
-  featureImage: string
-  brand: string
-  brandId: string
-  productTypeId: string
-  saved: boolean
-  images: ProductImage[],
-  variants: ProductVariant[],
-}
-
-export interface ProductImage {
-  imagePath: string,
-  productId: number
-}
-
 export interface InitialStateType {
   authenticationResponse: AuthenticationResponse,
-  shops: Shop[],
   isLoaderVisible : boolean,
   httpError: HttpError | null
 }
@@ -97,73 +24,6 @@ export interface HttpError {
   timestamp: string,
   error: string,
   path: string
-}
-
-export interface Category {
-  id: any
-  providerAlias: string
-  categoryId: number
-  title: string
-  slug: string
-  weight: string
-}
-
-export interface ProductVariant {
-  id: any
-  product: any
-  stockCode: any
-  barcode: string
-  stockCount: number
-  stockId: number
-  options: ProductVariantOption[]
-}
-
-export interface ProductVariantOption {
-  id: any
-  product: any
-  optionValue: string
-  optionId: string
-  optionVariantId: any
-  optionTitle: any
-}
-
-export interface PageableProducts {
-  content: Product[],
-  first: boolean,
-  last: boolean
-  number : number,
-  numberOfElements: number,
-  size: 10,
-  totalElements: number,
-  totalPages: number,
-  pageable: Pageable
-  sort: PageableSort
-}
-
-export interface PageableShops {
-  content: Shop[],
-  first: boolean,
-  last: boolean
-  number : number,
-  numberOfElements: number,
-  size: 10,
-  totalElements: number,
-  totalPages: number,
-  pageable: Pageable
-  sort: PageableSort
-}
-
-export interface PageableProviders {
-  content: Provider[],
-  first: boolean,
-  last: boolean
-  number : number,
-  numberOfElements: number,
-  size: 10,
-  totalElements: number,
-  totalPages: number,
-  pageable: Pageable
-  sort: PageableSort
 }
 
 export interface Pageable {

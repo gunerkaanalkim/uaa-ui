@@ -13,10 +13,6 @@ export const mainReducer = createImmerReducer(
     state.authenticationResponse = authenticationResponse;
     return state;
   }),
-  on(ProjectViewActions.setAllShops, (state, {shops}) => {
-    state.shops = shops;
-    return state;
-  }),
   on(ProjectViewActions.setLoaderVisible, (state, {isLoaderVisible}) => {
     state.isLoaderVisible = isLoaderVisible;
     return state;

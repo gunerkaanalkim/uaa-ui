@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {AbstractCrudService, Upstream} from "./base/AbstractCrudService";
-import {PageableRoles, PageableUsers, Role, SearchFilterRequest, Shop} from "../store/model";
+import {PageableRoles, Role, SearchFilterRequest} from "../store/model";
 import {APP_CONFIG} from "../config/tokens";
 import {HttpClient} from "@angular/common/http";
 import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
