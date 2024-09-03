@@ -1,17 +1,19 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Store} from "@ngrx/store";
 import {setAuthenticationResponse} from "../../store/project.action";
 import {Router} from "@angular/router";
 import {NgxSpinnerService} from "ngx-spinner";
+import {selectHttpError} from "../../store/project.selector";
+import {HttpError} from "../../store/model";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   constructor(
     private readonly authenticationService: AuthenticationService,
     private readonly store: Store,
@@ -28,6 +30,12 @@ export class LoginComponent {
     [Validators.minLength(4),
       Validators.maxLength(50)]
   );
+
+  httpError: HttpError | null = null;
+
+  ngOnInit(): void {
+    this.selectHttpError();
+  }
 
   onLogin() {
     if (!this.formHasError()) {
@@ -53,5 +61,11 @@ export class LoginComponent {
 
   formHasError() {
     return this.usernameHasError() || this.passwordHasError();
+  }
+
+  selectHttpError() {
+    this.store.select(selectHttpError).subscribe(httpError=>{
+      this.httpError = httpError;
+    })
   }
 }

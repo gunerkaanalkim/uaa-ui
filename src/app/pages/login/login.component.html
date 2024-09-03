@@ -3,14 +3,14 @@
     <div class="rounded d-flex justify-content-center">
       <div class="col-md-4 col-sm-12 shadow-lg p-5">
         <div class="text-center">
-          <h3 class="text-primary">Integrator</h3>
+          <h3 class="text-primary">UAA</h3>
+        </div>
+        <div *ngIf="httpError" class="text-center">
+          <div class="alert alert-danger" role="alert">
+            {{httpError?.message}}
+          </div>
         </div>
         <form action="">
-          <div
-            class="btn-group d-flex justify-content-center mb-3"
-            role="group"
-          >
-          </div>
           <div class="mb-3">
             <label for="username" class="form-label"> Username or Email </label>
             <input
@@ -48,19 +48,12 @@
             <button class="btn btn-primary" type="button" (click)="onLogin()" [disabled]="formHasError()">
               Login
             </button>
-<!--            <button class="btn btn-primary" type="button" (click)="onLogin()">-->
-<!--              Register-->
-<!--            </button>-->
           </div>
-<!--          <p class="text-center mt-5">-->
-<!--            Don't have an account?-->
-<!--            <a class="text-primary" [routerLink]="['/register']">Sign Up</a>-->
-<!--          </p>-->
-<!--          <p class="text-center">-->
-<!--            <a class="text-primary" [routerLink]="['/forgot-password']"-->
-<!--            >Forgot password</a-->
-<!--            >-->
-<!--          </p>-->
+          <p class="text-center">
+            <a class="text-primary" [routerLink]="['/forgot-password']">
+              Forgot password
+            </a>
+          </p>
         </form>
       </div>
     </div>

@@ -3,22 +3,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Dev Local",
-      "type": "chrome",
+      "name": "Local",
+      "command": "ng serve --watch --configuration development",
       "request": "launch",
-      "preLaunchTask": "npm: asd",
-      "url": "http://localhost:4200/",
-      "runtimeArgs": [
-        "-S",
-        "localhost:8888",
-      ]
-    },
-    {
-      "name": "ng test",
-      "type": "chrome",
-      "request": "launch",
-      "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}",
     }
   ]
 }
