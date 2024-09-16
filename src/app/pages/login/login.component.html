@@ -7,7 +7,7 @@
         </div>
         <div *ngIf="httpError" class="text-center">
           <div class="alert alert-danger" role="alert">
-            {{httpError?.message}}
+            {{ httpError.message }}
           </div>
         </div>
         <form action="">
@@ -45,15 +45,22 @@
             </div>
           </div>
           <div class="d-grid gap-2">
-            <button class="btn btn-primary" type="button" (click)="onLogin()" [disabled]="formHasError()">
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="onLogin()"
+              [disabled]="formHasError()"
+            >
               Login
             </button>
           </div>
-          <p class="text-center">
-            <a class="text-primary" [routerLink]="['/forgot-password']">
-              Forgot password
-            </a>
-          </p>
+          <div class="d-grid gap-2">
+            <p class="text-center">
+              <a class="text-primary" [routerLink]="['/forgot-password']">
+                Forgot password
+              </a>
+            </p>
+          </div>
         </form>
       </div>
     </div>

@@ -20,7 +20,8 @@ export const environment = {
         destroyAll: '/user/delete-all',
         assignRole: '/user/assign-role',
         revokeRole: '/user/revoke-role',
-        getAssignedRole: '/user/get-assigned-role'
+        getAssignedRole: '/user/get-assigned-role',
+        forgotPassword: '/user/forgot-password',
       },
       permission: {
         getAll: "/permission/get-all",

@@ -37,6 +37,7 @@ import {RealmListingComponent} from './pages/realm/realm-listing/realm-listing.c
 import { RealmCreateComponent } from './pages/realm/realm-create/realm-create.component';
 import { RealmDeleteComponent } from './pages/realm/realm-delete/realm-delete.component';
 import { RealmEditComponent } from './pages/realm/realm-edit/realm-edit.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { RealmEditComponent } from './pages/realm/realm-edit/realm-edit.componen
     RealmCreateComponent,
     RealmDeleteComponent,
     RealmEditComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
