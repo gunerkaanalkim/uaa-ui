@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpError, AuthenticationResponse} from "../../store/model";
+import {HttpError, AuthenticationResponse, UserInfo} from "../../store/model";
 import {Store} from "@ngrx/store";
 import {LOGOUT} from "../../store/project.action";
 import {Router} from "@angular/router";
@@ -14,6 +14,7 @@ import {selectHttpError, selectUserDetails} from "../../store/project.selector";
 export class HeaderComponent implements OnInit {
   httpError: HttpError | null = null;
   theme: string = '';
+  userInfo: UserInfo = {} as UserInfo;
 
   constructor(
     private readonly store: Store,
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.whoAmI();
     this.selectHttpError();
+    this.selectUserDetails();
 
     let savedTheme = localStorage.getItem('theme')!;
 
@@ -70,5 +72,12 @@ export class HeaderComponent implements OnInit {
     document.querySelector("html").setAttribute("data-bs-theme", "light")
     localStorage.setItem('theme', "light");
     this.theme = 'light';
+  }
+
+  selectUserDetails() {
+    this.store.select(selectUserDetails)
+      .subscribe(userInfo=>{
+        this.userInfo = userInfo;
+      })
   }
 }

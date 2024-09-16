@@ -4,34 +4,10 @@ export const environment = {
   realmId: 1,
   api: {
     services: {
-      auth: 'http://localhost:8080/realms/external/protocol/openid-connect',
+      auth: 'http://localhost:8080/uaa/api',
       integrator: 'http://localhost:8081/integrator/api'
     },
     endpoints: {
-      product: {
-        getAll: "/product/get-all",
-        getAllWithoutPage: '/product/get-all-without-page',
-        getById: `/product/get`,
-        filter: '/product/filter',
-        create: '/product/save',
-        createAll: '/product/save-all',
-        edit: '/product/update',
-        destroy: '/product/delete-by-product-id',
-        destroyAll: '/product/delete-all',
-        getProductImages: '/product/images',
-      },
-      shop: {
-        getAll: "/shop/get-all",
-        getAllWithoutPage: '/shop/get-all-without-page',
-        getById: `/shop/get`,
-        filter: '/shop/filter',
-        create: '/shop/save',
-        createAll: '/shop/save-all',
-        edit: '/shop/update',
-        destroy: '/shop/delete-by-product-id',
-        destroyAll: '/shop/delete-all',
-        getProductImages: '/shop/images',
-      },
       user: {
         getAll: "/user/get-all",
         getAllWithoutPage: '/user/get-all-without-page',
@@ -44,7 +20,8 @@ export const environment = {
         destroyAll: '/user/delete-all',
         assignRole: '/user/assign-role',
         revokeRole: '/user/revoke-role',
-        getAssignedRole: '/user/get-assigned-role'
+        getAssignedRole: '/user/get-assigned-role',
+        forgotPassword: '/user/forgot-password',
       },
       permission: {
         getAll: "/permission/get-all",
@@ -84,32 +61,9 @@ export const environment = {
         revokePermission: '/role/revoke-permission',
         revokeAllPermission: '/role/revoke-all-permissions',
       },
-      provider: {
-        getAll: "/provider/get-all",
-        getAllWithoutPage: '/provider/get-all-without-page',
-        getById: `/provider/get`,
-        filter: '/provider/filter',
-        create: '/provider/save',
-        createAll: '/provider/save-all',
-        edit: '/provider/update',
-        destroy: '/provider/delete-by-product-id',
-        destroyAll: '/provider/delete-all',
-        getProductImages: '/provider/images',
-      },
-      integration: {
-        getAllBrands: '/integration/get-all-brands',
-        getAllCategories: '/integration/get-all-categories',
-        getProductsByBrand: '/integration/get-products-by-brand',
-        getProductsByCategory: '/integration/get-products-by-category',
-        saveProductImages: '/integration/save-product-images',
-        saveProductVariants: '/integration/save-product-variants',
-        saveProductVariantOptions: '/integration/save-product-variant-options',
-        addToProductDb : '/integration/add-to-product-db',
-        generateContent : '/integration/chat-gpt/generate-content',
-      },
       authenticate : {
         whoAmI: '/authenticate/who-am-i',
-        login: '/token',
+        login: '/authenticate/login/realm',
       }
     }
   }

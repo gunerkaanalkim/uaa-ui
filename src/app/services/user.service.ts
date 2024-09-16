@@ -1,17 +1,18 @@
-import {Inject, Injectable} from '@angular/core';
-import {AbstractCrudService, Upstream} from "./base/AbstractCrudService";
-import {PageableUsers, SearchFilterRequest, Shop, User} from "../store/model";
-import {APP_CONFIG} from "../config/tokens";
-import {HttpClient} from "@angular/common/http";
-import {GlobalExceptionHandlerService} from "./global-exception-handler.service";
-import {Store} from "@ngrx/store";
-import {NgxSpinnerService} from "ngx-spinner";
-import {setHttpError} from "../store/project.action";
+import { HttpClient } from "@angular/common/http";
+import { Inject, Injectable } from '@angular/core';
+import { Store } from "@ngrx/store";
+import { NgxSpinnerService } from "ngx-spinner";
+import { catchError } from 'rxjs';
+import { APP_CONFIG } from "../config/tokens";
+import { PageableUsers, SearchFilterRequest, User } from "../store/model";
+import { setHttpError } from "../store/project.action";
+import { AbstractCrudService, Upstream } from "./base/AbstractCrudService";
+import { GlobalExceptionHandlerService } from "./global-exception-handler.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService extends AbstractCrudService<User, PageableUsers, SearchFilterRequest>{
+export class UserService extends AbstractCrudService<User, PageableUsers, SearchFilterRequest> {
 
   constructor(
     @Inject(APP_CONFIG) protected override config: any,
@@ -21,7 +22,7 @@ export class UserService extends AbstractCrudService<User, PageableUsers, Search
     protected override ngxSpinnerService: NgxSpinnerService
   ) {
     super(config, httpClient, globalExceptionHandlerService, store, ngxSpinnerService);
-    this.store.dispatch(setHttpError({httpError: null}))
+    this.store.dispatch(setHttpError({ httpError: null }))
   }
 
   getRoutes(): Upstream {
@@ -36,5 +37,19 @@ export class UserService extends AbstractCrudService<User, PageableUsers, Search
       destroy: `${this.config.api.services.auth}${this.config.api.endpoints.user.destroy}`,
       destroyAll: `${this.config.api.services.auth}${this.config.api.endpoints.user.destroyAll}`,
     };
+  }
+
+  forgotPassword(username: string) {
+    console.log(username);
+    
+    return this.httpClient
+      .post<any>(`${this.config.api.services.auth}${this.config.api.endpoints.user.forgotPassword}`, {
+        username: username,
+        realmId: this.config.realmId
+      })
+      .pipe(catchError(this.globalExceptionHandlerService.handleError.bind({
+        store: this.store,
+        spinner: this.ngxSpinnerService
+      })))
   }
 }

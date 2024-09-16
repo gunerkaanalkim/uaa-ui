@@ -1,8 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpErrorResponse} from "@angular/common/http";
-import {throwError} from "rxjs";
-import {Store} from "@ngrx/store";
-import {setHttpError} from "../store/project.action";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { throwError } from "rxjs";
+import { setHttpError } from "../store/project.action";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +21,17 @@ export class GlobalExceptionHandlerService {
       console.error('An error occurred:', error.error);
     } else if (error.status === 401) {
       location.replace('/login')
+    } else if (error.status === 403) {
+      //@ts-ignore
+      this.store.dispatch(setHttpError({httpError: {
+          message: "Username or password are incorrect.",
+          status: 403,
+          trace: "string",
+          timestamp: "string",
+          error: "string",
+          path: "string"
+        }}))
+
     } else {
       if (error.error.message === "401 Token not valid.") {
         location.replace('/login')
